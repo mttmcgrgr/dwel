@@ -46,9 +46,10 @@ The app will make use of the following components:
     - Messages_index_item
 
 
-Technical challenges will include implementing Google API for fingerprint auth,
-Initial setup between landlord and tenant with a unique key received by the landlord by email,
-then shared with tenants to sign up and create association.
+Technical challenges will include implementing Google API for fingerprint
+auth and initial association between landlord and tenant via a unique key
+given to landlord upon signup.
+
 
 ### Group Members & Work Breakdown
 
