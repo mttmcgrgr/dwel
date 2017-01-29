@@ -1,16 +1,15 @@
-## Lyft Tyme
+## Dwel
 
 ### Background
 
 Keeping in touch with your landlord or tenants is important and can be
 
-Development of the features in this extension will be guided by [Usability.gov](https://www.usability.gov/get-involved/blog/2010/02/color-blindness.html), [99Designs](https://99designs.com/blog/tips/designers-need-to-understand-color-blindness/), and [We Are Colorblind](http://wearecolorblind.com).
 
 ### Functionality & MVP
 
 With this extension, users will be able to:
 
-- [ ] Tenants can send messages to their landlord
+- [ ] Tenants can send messages to their landlord and
 - [ ] Tenants can create to-dos for their landlord
 - [ ] Landlords can message their tenants and check off user created to-dos
 - [ ] Tenants and Landlords can review history of to-dos and messages
@@ -18,80 +17,89 @@ With this extension, users will be able to:
 
 ### Wireframes
 
-![wireframes](images/flex-settings.png)
+
 
 ### Technologies & Technical Challenges
 
-This extension will be implemented using the standard Chrome extension technology: Javascript, HTML, and CSS.  In addition to the `manifest.json` and `package.json` files, there will be two scripts:
+This app will be implemented using the following technology: React Native, Google API (fingerprint auth),
+JavaScript, HTML and CSS.
 
-- `content.js`: will contain the logic for finding and recoloring elements in the DOM
-- `options.js`: will contain the logic for changing the user's settings
+The app will make use of the following components:
 
-There will also be two HTML files to display the content:
+- Session (login / signup)
+  - Tenant_form
+  - Landlord_form
 
-- `new_style.css`: the file containing the styling rules for recoloring
-- `options.html`: the file that renders the Settings menu for the user
+- Landlord_home (landlord home page)
+  - Property_form
+  - Property_index
 
-The primary technical challenges will be:
+- Property_index_item (tenants home page)
+  - Messages_form
+  - Todos_form (for tenants)
+  - Tenants_index
+    - Tenants_index_item
+  - Todos_index
+    - Todos_index_item
+      - Todo_messages (keeps record)
+  - Messages_index
+    - Messages_index_item
 
-- Identifying all the colors used on the DOM elements,
-- Determining which grey scale tone corresponds to each color -- this will be different depending on whether the user requires high contrast or not
-- Determining which high-contrast colors should be used to replace the existing colors, when the extension is in high contrast color mode
 
-The colors will be identified by mapping classes in the DOM to a variety of attributes in the CSS such as `color`, `background-color`, and perhaps others.  Going from color to grey scale will be done with a standard algorithm.  Going from color to high-contrast color will be more challenging: currently, I plan to utilize a subset of high-contrast colors and map the given colors via some distance algorithm to the best match for these colors.  
+Technical challenges will include implementing Google API for fingerprint auth,
+Initial setup between landlord and tenant with a unique key received by the landlord by email,
+then shared with tenants to sign up and create association.
 
 ### Group Members & Work Breakdown
 
-Our group consists of two members, Munyo Frey and Ryan Hall.  
+Our group consists of three members, Matt McGregor, Victor Guillen and Aron Cutler.  
 
-Munyo's primary responsibilities will be:
+Matt's primary responsibilities will be:
 
-- Researching & implementing the ability to locate and alter DOM elements
-- Creating the functionality to identify all colors based on the CSS file
-- Writing the algorithm to correctly identify high-contrast alternatives
-- Creating the Chrome store page & marketing the app
+- Setting up back-end and front-end user authentication.
+- Designing backend architecture to differentiate between landlord and tenant users.
+- Creating sign up and login form component for landlords and tenants
+- Creating the display page & marketing the app
+- Writing the authentication aspects of repo's README, complete with screenshots and code snippets  
 
-Ryan's primary responsibilites will be:
+Victor's primary responsibilites will be:
 
-- Researching and setting up the Chrome extension infrastructure
-- Producing the new HTML file with new colors
-- Creating the algorithm to correctly identify gray-scale alternatives
-- Creating the Settings page
-- Writing the repo's README, complete with screenshots and code snippets  
+- Setting up back-end messaging functionality.
+- Building message index, index item, and form components.  
+- Styling all message components.  
+- Writing the messaging aspects of the repo's README, complete with screenshots and code snippets
+- Creating the display page & marketing the app
+
+Aron's primary responsibilites will be:
+
+- Setting up backend to-do functionality.  
+- Building todo index, index item, and form components.  
+- Styling all todo components.  
+- Writing the todo aspects of the repo's README, complete with screenshots and code snippets
+- Creating the display page & marketing the app
 
 ### Implementation Timeline
 
-**Day 1**: Get started on the infrastructure of the extension, following [this guide](https://developer.chrome.com/extensions/getstarted) from Chrome.  By the end of the day, we will have:
+**Day 1**:
+- Get familiar with Google API and React Native (all)
+- Begin auth and backend setup with user, message, todo and property tables (Matt)
 
-- A completed `package.json` (Ryan)
-- A completed `manifest.json` (Ryan)
-- The ability to locate and alter a DOM element by class (Munyo)
+**Day 2**:
+-  Auth forms for user type (tenants vs landlords) and create SecureRandom code for landlords
+   to share with tenants (Matt)
 
-**Day 2**: Work on identifying the colors used in the DOM by class and other attributes, and create and render a new DOM with different colors.  By the end of the day, we will have:
 
-- The ability to identify all colors (Munyo)
-- A new HTML file that gets rendered in place of the current DOM, using different colors (Ryan)
+**Day 3**:
+-  Finish Auth and work on form emails sent to tenants by landlord via signup page(Matt)
 
-**Day 3**: Dedicate this day to correctly replacing colors with their grey scale or high-contrast equivalents.  By the end of the day:
+**Day 4**:
+-  Work on styling of auth forms
 
-- Implement an algorithm for replacing colors with grey scale tones (Ryan)
-- At least understand (and hopefully implement) and algorithm for replacing colors with high-contrast equivalents (Munyo)
-- Render a new DOM that contains each of these color equivalents (Ryan)
 
-**Day 4**: Create the settings page and connect the settings to the color change logic.  If time, create high-contrast grey scale and low-contrast algorithms as well.  By the end of the day:
-
-- Fully implemented settings changes that re-render a differently colored DOM (Ryan)
-- A detailed README (Ryan)
-- A polished Chrome store page, sent to our networks to begin marketing/downloads (Munyo)
-- If time, implement the final two features: normal color to low contrast and normal to high-contrast grey scale (Both)
-
-**Day 5**: Create demo page for chrome extension. By the end of the day:
-- Set up github pages (Ryan)
-- Mock up wireframes for how the demo page will look (Both)
-- Grab nice looking screenshots from the chrome extension (Munyo)
-- Make a few gifs that shows off the key features of the chrome extension (Munyo)
+**Day 5**:
+- assist on any loose ends and work on production readme / marketing
 
 ### Plan for getting users and reviews
-- Both Munyo and Ryan will each share with at least 20 friends and family and ask for good reviews
-- Munyo will find an appropriate subreddit and make a post there to show off the chrome extension
-- Ryan will reach out to http://www.colourblindawareness.org/ to share the chrome extension
+- links to app page will be posted on relevant subreddits and message boards
+- All members will share app with landlords and tenants
+- App will be submitted to the Apple App Store  
