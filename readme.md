@@ -2,17 +2,23 @@
 
 ### Background
 
-Keeping in touch with your landlord or tenants is important and can be
+
 
 
 ### Functionality & MVP
 
-With this extension, users will be able to:
+With this app, users will be able to:
 
-- [ ] Tenants can send messages to their landlord and
-- [ ] Tenants can create to-dos for their landlord
-- [ ] Landlords can message their tenants and check off user created to-dos
-- [ ] Tenants and Landlords can review history of to-dos and messages
+- [ ] login using fingerprint ID (landlords and tenants)
+- [ ] send messages and create message threads (tenants and landlords)
+- [ ] Create to-dos with applicable info (tenants)
+- [ ] Respond to to-do items and mark as done (landlord)
+- [ ] View message and todo history for each property (landlords and tenants)
+- [ ] View messages, todos and tenants by property (landlord)
+
+Bonus features:
+
+- [ ] Venmo payments using Venmo API (tenants and landlords)
 
 
 ### Wireframes
