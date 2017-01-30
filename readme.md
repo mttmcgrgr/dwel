@@ -90,21 +90,26 @@ Aron's primary responsibilites will be:
 **Day 1**:
 - Get familiar with Google API and React Native (all)
 - Begin auth and backend setup with user, message, todo and property tables (Matt)
+- Read Venmo's API documentation. Comeplete tutorial on sending money. (Victor)
 
 **Day 2**:
 -  Auth forms for user type (tenants vs landlords) and create SecureRandom code for landlords
    to share with tenants (Matt)
+- Create Schema, Model, Routes, Controller, Jbuilder View and AJAX Util for Comments. (Victor).
 
 
 **Day 3**:
--  Finish Auth and work on form emails sent to tenants by landlord via signup page(Matt)
+-  Finish Auth and work on form emails sent to tenants by landlord via signup page(Matt).
+- Create Actions, Reducer, Container and Presentational component for Comments. (Victor)
 
 **Day 4**:
 -  Work on styling of auth forms
+- Integrate Venmo API.
 
 
 **Day 5**:
 - assist on any loose ends and work on production readme / marketing
+- Style App. (Victor).
 
 ### Plan for getting users and reviews
 - links to app page will be posted on relevant subreddits and message boards
