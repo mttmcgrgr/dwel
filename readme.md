@@ -13,7 +13,7 @@ Dwel makes paying rent easy by using Venmo’s API the tenant can send money by 
 
 With this app, users will be able to:
 
-- [ ] login using fingerprint ID (landlords and tenants)
+- [ ] log in using fingerprint ID (landlords and tenants)
 - [ ] send messages and create message threads (tenants and landlords)
 - [ ] Create to-dos with applicable info (tenants)
 - [ ] Respond to to-do items and mark as done (landlord)
