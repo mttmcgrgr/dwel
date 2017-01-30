@@ -2,7 +2,11 @@
 
 ### Background
 
+Communication between landlord and tenant can stressful and hard to keep records of. Dwel is a single-page mobile app that connects landlord and tenants by providing a property profile where tenants can request repairs and pay rent.
 
+The tenant can add a repair task, by providing a description of the repair and photos for more detail.  After the task has been approved by the landlord it can’t be deleted to help keep track of the repair history. Each task has a comments section where landlord and tenants can chat about the details. After a task has been completed, it gets checked off by the landlord but stays in the property profile.
+
+Dwel makes paying rent easy by using Venmo’s API the tenant can send money by using the landlord’s phone number or username.
 
 
 ### Functionality & MVP
@@ -23,7 +27,7 @@ Bonus features:
 
 ### Wireframes
 
-
+![property_page](wireframes/property.jpg)
 
 ### Technologies & Technical Challenges
 
