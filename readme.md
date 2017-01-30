@@ -95,25 +95,30 @@ Aron's primary responsibilites will be:
 - Get familiar with Google API and React Native (all)
 - Begin auth and backend setup with user, message, todo and property tables (Matt)
 - Read Venmo's API documentation. Comeplete tutorial on sending money. (Victor)
+- Build rails backend for todos, including migrations, model, controller, and JBuilder views (Aron)
 
 **Day 2**:
 -  Auth forms for user type (tenants vs landlords) and create SecureRandom code for landlords
    to share with tenants (Matt)
-- Create Schema, Model, Routes, Controller, Jbuilder View and AJAX Util for Comments. (Victor).
+- Create Schema, Model, Routes, Controller, Jbuilder View and AJAX Util for Comments. (Victor)
+- Learn React Native and construct todos api util functions, actions, reducer, and container(Aron)
 
 
 **Day 3**:
--  Finish Auth and work on form emails sent to tenants by landlord via signup page(Matt).
-- Create Actions, Reducer, Container and Presentational component for Comments. (Victor)
+-  Finish Auth and work on form emails sent to tenants by landlord via signup page(Matt)
+- Create Actions, Reducer, Container and Presentational component for Comments (Victor)
+- Build todosIndex, todosIndexitem, and todosForm components (Aron)
 
 **Day 4**:
--  Work on styling of auth forms
-- Integrate Venmo API.
+-  Work on styling of auth forms (Matt)
+- Integrate Venmo API (Victor)
+- Style all todo components all collaborate with Victor and Matt on splash page and session form styling (Aron)
 
 
 **Day 5**:
-- assist on any loose ends and work on production readme / marketing
-- Style App. (Victor).
+- assist on any loose ends and work on production readme / marketing (Matt)
+- Style App (Victor)
+- Integrate todos into history page and write todos portion of Production README (Aron)
 
 ### Plan for getting users and reviews
 - links to app page will be posted on relevant subreddits and message boards
