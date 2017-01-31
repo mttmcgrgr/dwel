@@ -17,10 +17,10 @@ export default class Dwel extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Dwel!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          An app for landlords and tenants index.ios.js
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#b3bbc9',
   },
   welcome: {
     fontSize: 20,
