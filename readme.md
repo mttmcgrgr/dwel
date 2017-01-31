@@ -11,11 +11,20 @@ The tenant can add a repair ticket by providing a title and description of the i
 
 With this app, users will be able to:
 
+<<<<<<< HEAD
 - [ ] login / Signup using email
 - [ ] Tenants can create repair tickets
 - [ ] Tenants and landlords can communicate on threads attached to tickets
 - [ ] Landlords can mark tickets as "done"
 
+=======
+- [ ] log in using fingerprint ID (landlords and tenants)
+- [ ] send messages and create message threads (tenants and landlords)
+- [ ] Create to-dos with applicable info (tenants)
+- [ ] Respond to to-do items and mark as done (landlord)
+- [ ] View message and todo history for each property (landlords and tenants)
+- [ ] View messages, todos and tenants by property (landlord)
+>>>>>>> 3397aa6ea6c3df681cb9fa29993b194636d7d105
 
 Bonus features:
 
