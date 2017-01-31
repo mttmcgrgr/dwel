@@ -2,7 +2,7 @@
 
 ### Background
 
-Communication between landlord and tenant can stressful and hard to keep records of. Dwel is a mobile app that connects landlords and tenants through a simple UI that allows tenants to create repair tickets for landlords and keeps a record of all relevant communications.
+Communication between landlord and tenant can stressful and hard to keep records of. Dwel is a iOS mobile app that connects landlords and tenants through a simple UI that allows tenants to create repair tickets for landlords and keeps a record of all relevant communications.
 
 The tenant can add a repair ticket by providing a title and description of the issue. Each task has a comments section where landlord and tenants can chat about the details. After a task has been completed, it gets checked off by the landlord but stays in the property profile. Tasks and their communication records are never removed.
 
