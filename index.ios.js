@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import SessionFormContainer from './frontend/components/session_form/session_form';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,13 +13,16 @@ import {
   View
 } from 'react-native';
 
+
 export default class Dwel extends Component {
   render() {
     return (
+
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Dwel!
         </Text>
+        <SessionForm/>
         <Text style={styles.instructions}>
           An app for landlords and tenants index.ios.js
         </Text>

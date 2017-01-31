@@ -9,11 +9,7 @@
   "dependencies": {
     "react": "15.4.2",
     "react-native": "0.40.0",
-<<<<<<< HEAD
     "react-native-lock": "^0.4.0"
-=======
-    "react-native-vector-icons": "^4.0.0"
->>>>>>> 3397aa6ea6c3df681cb9fa29993b194636d7d105
   },
   "devDependencies": {
     "babel-jest": "18.0.0",
