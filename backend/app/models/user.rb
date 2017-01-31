@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
-	has_many :posts
+	has_many :todos
+	has_many :comments
+	belongs_to :group
 
 
 	def password= password
