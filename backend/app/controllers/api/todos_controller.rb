@@ -5,7 +5,7 @@ class Api::TodosController < ApplicationController
     @todo.group_id = current_user.group.id
     @todo.resolved = false
     if @todo.save
-      render :index
+      render 'api/todos/index'
     else
       render json: @todo.errors.full_messages, status: 422
     end
