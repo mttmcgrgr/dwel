@@ -44,8 +44,7 @@ class SessionForm extends Component {
 					value={this.state.password}
 				/>
 				<TouchableHighlight
-					style={styles.button}
-					onPress={onButtonPress}>
+					style={styles.button}>
 	          <Text style={styles.usernameInput}>
 	            Submit
 	          </Text>
