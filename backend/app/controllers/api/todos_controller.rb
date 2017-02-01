@@ -5,7 +5,7 @@ class Api::TodosController < ApplicationController
     @todo.group_id = current_user.group.id
     @todo.resolved = false
     if @todo.save
-      render 'api/todos/index'
+      render :index
     else
       render json: @todo.errors.full_messages, status: 422
     end
@@ -17,7 +17,7 @@ class Api::TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    if @todo.update(todo_params)
+    if @todo.update(resolved: true)
       render :index
     end
   end
