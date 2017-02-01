@@ -34,10 +34,12 @@ class Api::GroupsController < ApplicationController
     else
       @group.update(tenant_id: current_user.id)
     end
+    render :show
   end
 
   private
 
   def group_params
     params.require(:group).permit(:id, :token)
+  end
 end
