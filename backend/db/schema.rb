@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170131180904) do
 
   create_table "comments", force: :cascade do |t|
@@ -20,6 +21,20 @@ ActiveRecord::Schema.define(version: 20170131180904) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+ActiveRecord::Schema.define(version: 20170131181436) do
+
+  create_table "todos", force: :cascade do |t|
+    t.integer  "group_id",   null: false
+    t.text     "body",       null: false
+    t.boolean  "resolved",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "type"
+  end
+
+  add_index "todos", ["group_id"], name: "index_todos_on_group_id"
+
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                        null: false
