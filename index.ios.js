@@ -1,11 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 
+import SessionForm from './frontend/components/SessionForm';
 import React, { Component } from 'react';
-import SessionFormContainer from './frontend/components/session_form/session_form';
 import {
   AppRegistry,
   StyleSheet,
@@ -13,23 +8,24 @@ import {
   View
 } from 'react-native';
 
-
 export default class Dwel extends Component {
   render() {
     return (
-
       <View style={styles.container}>
+
+
         <Text style={styles.welcome}>
-          Dwel!
+          DWELL
         </Text>
+
         <SessionForm/>
         <Text style={styles.instructions}>
-          An app for landlords and tenants index.ios.js
+
         </Text>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+
         </Text>
+
       </View>
     );
   }
@@ -40,18 +36,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#b3bbc9',
+    backgroundColor: '#259ebc',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: "white"
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
+  statusBarBackground: {
+    height: 20,
+    backgroundColor: "white"
+  }
 });
 
 AppRegistry.registerComponent('Dwel', () => Dwel);
