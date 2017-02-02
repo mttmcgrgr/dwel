@@ -1,5 +1,5 @@
 
-import SessionForm from './frontend/components/SessionForm';
+import SessionForm from './components/SessionForm';
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -17,7 +17,7 @@ export default class Dwel extends Component {
           component: SessionForm,
           title: 'Create Account',
         }}
-        style={{flex: 1}}
+        style={{flex: 1, backgroundColor: '#259ebc'}}
       />
     );
   }

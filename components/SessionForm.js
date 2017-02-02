@@ -1,6 +1,9 @@
 'use strict';
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight,  TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet,
+	       TouchableHighlight, TextInput,
+				 Button, Image } from 'react-native';
+import Keycode from './Keycode';
 
 class SessionForm extends Component {
 	constructor(props) {
@@ -44,6 +47,10 @@ class SessionForm extends Component {
 	render() {
 		return (
 		<View style={styles.inputForm}>
+				<Image
+					style={styles.logo}
+					source={require('../images/logo.png')}
+				/>
 				<TextInput
 					style={styles.usernameInput}
 					placeholder="Username"
@@ -57,9 +64,10 @@ class SessionForm extends Component {
 					value={this.state.password}
 				/>
 				<TouchableHighlight
-					style={styles.button}>
-	          <Text style={styles.usernameInput}>
-	            Submit
+					style={styles.button}
+					onPress={this.createAccount}>
+	          <Text style={styles.buttonText}>
+	            Continue
 	          </Text>
         </TouchableHighlight>
 		</View>
@@ -78,7 +86,9 @@ const styles = StyleSheet.create({
 			borderWidth: 1,
 			width: 200,
 			marginBottom: 10,
-			backgroundColor: "white"
+			backgroundColor: "white",
+			left: 70
+
 	},
 
 	passwordInput: {
@@ -90,26 +100,51 @@ const styles = StyleSheet.create({
 			borderWidth: 1,
 			width: 200,
 			marginBottom: 20,
-			backgroundColor: "white"
+			backgroundColor: "white",
+			left: 70
  	},
 
 	inputForm: {
+		flex: 1,
 		alignItems: "stretch",
 		justifyContent: "center",
-		height: 30,
 		padding: 10,
-		width: 100,
-		top: 40,
-		left: -60
+		backgroundColor: '#259ebc',
+
 	},
 
 	button: {
 		height: 30,
 		width: 200,
 		borderColor: 'gray',
-		backgroundColor: 'white',
 		flexDirection: 'row',
-	  justifyContent: 'space-between'
+	  justifyContent: 'space-between',
+		backgroundColor: '#259ebc',
+		alignItems: 'center'
+	},
+
+	logo: {
+		justifyContent:'center',
+		width: 50,
+		height: 50,
+		left: 145,
+		marginBottom: 20
+	},
+
+	buttonText: {
+
+		height: 30,
+		borderColor: 'gray',
+		padding: 10,
+		fontSize: 12,
+		borderWidth: 1,
+		width: 200,
+		marginBottom: 10,
+		backgroundColor: "white",
+		left: 70,
+		fontWeight: 'bold',
+		textAlign: 'center'
+
 	}
 
 });
