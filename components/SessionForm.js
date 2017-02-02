@@ -10,26 +10,29 @@ class SessionForm extends Component {
 		super(props);
 		this.state = {
 			username: "",
-			password: ""
+			password: "",
+			errors: ""
 		};
 		this.createAccount = this.createAccount.bind(this);
 		this._onForward = this._onForward.bind(this);
 	}
 
 	createAccount(){
-		fetch('http://localhost:3000/api/users', {
-			  method: 'POST',
-			  headers: {
-			    'Accept': 'application/json',
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify({ user: {
-					username: this.state.username,
-					password: this.state.password
-				}
-			  })
-			}).then(this._onForward());
-  	}
+ 		fetch('http://localhost:3000/api/users', {
+ 			  method: 'POST',
+ 			  headers: {
+ 			    'Accept': 'application/json',
+ 			    'Content-Type': 'application/json',
+ 			  },
+ 			  body: JSON.stringify( {user:{
+ 			    username: this.state.username,
+ 			    password: this.state.password
+ 			  }}).catch(error => {
+           console.error(error);
+					 this.state.erros = error;
+         })
+ 	   	});
+	 }
 
 
 		_onForward() {
@@ -50,7 +53,7 @@ class SessionForm extends Component {
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
-					D W E L L
+					D W E L
 				</Text>
 				<Image
 					style={styles.logo}

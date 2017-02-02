@@ -10,7 +10,8 @@ class Keycode extends Component {
 		this.state = {
 			username: "",
 			password: "",
-      keycode: ""
+      keycode: "",
+			errors: ""
 		};
 		this.createAccount = this.createAccount.bind(this);
 		this._onForward = this._onForward.bind(this);
@@ -44,7 +45,7 @@ class Keycode extends Component {
   }
 
   keyGenerator(){
-    return Math.random().toString(36).slice(2,7);
+    return Math.random().toString(36).slice(2,8);
   }
 
 
@@ -61,7 +62,7 @@ class Keycode extends Component {
 				/>
 				<TextInput
 					style={styles.passwordInput}
-					placeholder="Ex: 1234567"
+					placeholder="Ex: abc123"
 					onChangeText={(text) => this.setState({keycode: text})}
 					value={this.state.keycode}
 				/>
