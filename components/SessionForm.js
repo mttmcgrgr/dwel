@@ -10,15 +10,31 @@ class SessionForm extends Component {
 			username: "",
 			password: ""
 		};
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.createAccount = this.createAccount.bind(this);
+		this._onForward = this._onForward.bind(this);
 	}
 
+	createAccount(){
+		fetch('http://localhost:3000/api/users', {
+			  method: 'POST',
+			  headers: {
+			    'Accept': 'application/json',
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify({
+			    username: this.state.username,
+			    password: this.state.password
+			  })
+			});
+  	}
 
-	handleSubmit(e) {
-		e.preventDefault();
-		const user = this.state;
-		this.props.processForm({user});
-	}
+		_onForward() {
+    this.props.navigator.push({
+      title: 'Scene ' + nextIndex,
+    });
+  }
+
+
 
 
 	render() {
