@@ -14,6 +14,7 @@ class Keycode extends Component {
 		};
 		this.createAccount = this.createAccount.bind(this);
 		this._onForward = this._onForward.bind(this);
+    this.keyGenerator = this.keyGenerator.bind(this);
 	}
 
 	createAccount(){
@@ -42,6 +43,9 @@ class Keycode extends Component {
   });
   }
 
+  keyGenerator(){
+    return Math.random().toString(36).slice(2,7);
+  }
 
 
 
@@ -49,7 +53,7 @@ class Keycode extends Component {
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
-					Enter Your Key
+					Enter Your Key Or Use Key Below
 				</Text>
 				<Image
 					style={styles.logo}
@@ -62,12 +66,18 @@ class Keycode extends Component {
 					value={this.state.keycode}
 				/>
 				<TouchableHighlight
-					style={styles.button}
-					onPress={this._onForward}>
+					style={styles.button}>
 	          <Text style={styles.buttonText}>
 	            Continue
 	          </Text>
         </TouchableHighlight>
+        <Text style={styles.title}>
+              New Key
+        </Text>
+
+        <Text style={styles.title}>
+          {this.keyGenerator()}
+        </Text>
 		</View>
 		);
 	}

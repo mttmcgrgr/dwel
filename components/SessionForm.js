@@ -23,11 +23,12 @@ class SessionForm extends Component {
 			    'Accept': 'application/json',
 			    'Content-Type': 'application/json',
 			  },
-			  body: JSON.stringify({
-			    username: this.state.username,
-			    password: this.state.password
+			  body: JSON.stringify({ user: {
+					username: this.state.username,
+					password: this.state.password
+				}
 			  })
-			});
+			}).then(this._onForward());
   	}
 
 
@@ -69,8 +70,7 @@ class SessionForm extends Component {
 				/>
 				<TouchableHighlight
 					style={styles.button}
-					onPress={this.createAccount}
-					>
+					onPress={this.createAccount}>
 	          <Text style={styles.buttonText}>
 	            Continue
 	          </Text>
