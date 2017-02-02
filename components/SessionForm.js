@@ -30,10 +30,11 @@ class SessionForm extends Component {
 			});
   	}
 
+
 		_onForward() {
     this.props.navigator.push({
     component: Keycode,
-    title: 'My Initial Scene',
+    title: 'Key Code',
     passProps: {
 			username: this.state.username,
 		 	password: this.state.password
@@ -47,6 +48,9 @@ class SessionForm extends Component {
 	render() {
 		return (
 		<View style={styles.inputForm}>
+				<Text style={styles.title}>
+					D W E L L
+				</Text>
 				<Image
 					style={styles.logo}
 					source={require('../images/logo.png')}
@@ -65,7 +69,8 @@ class SessionForm extends Component {
 				/>
 				<TouchableHighlight
 					style={styles.button}
-					onPress={this.createAccount}>
+					onPress={this.createAccount}
+					>
 	          <Text style={styles.buttonText}>
 	            Continue
 	          </Text>
@@ -119,30 +124,42 @@ const styles = StyleSheet.create({
 		borderColor: 'gray',
 		flexDirection: 'row',
 	  justifyContent: 'space-between',
-		backgroundColor: '#259ebc',
-		alignItems: 'center'
+		backgroundColor: 'white',
+		alignItems: 'center',
+		left: 70,
+		padding: 10,
 	},
 
 	logo: {
 		justifyContent:'center',
 		width: 50,
 		height: 50,
-		left: 145,
+		left: 142,
 		marginBottom: 20
 	},
 
 	buttonText: {
-
 		height: 30,
 		borderColor: 'gray',
-		padding: 10,
+		paddingTop: 8,
+		paddingBottom: 5,
 		fontSize: 12,
 		borderWidth: 1,
 		width: 200,
-		marginBottom: 10,
 		backgroundColor: "white",
-		left: 70,
 		fontWeight: 'bold',
+		textAlign: 'center',
+		left: -10
+	},
+
+	title: {
+		height: 30,
+		width: 200,
+		flexDirection: 'row',
+	  justifyContent: 'space-between',
+		alignItems: 'center',
+		left: 70,
+		padding: 10,
 		textAlign: 'center'
 
 	}
