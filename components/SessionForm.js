@@ -1,7 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight,  TextInput, Button } from 'react-native';
-import Form from 'react-native-form';
 
 class SessionForm extends Component {
 	constructor(props) {
@@ -30,8 +29,13 @@ class SessionForm extends Component {
 
 		_onForward() {
     this.props.navigator.push({
-      title: 'Scene ' + nextIndex,
-    });
+    component: Keycode,
+    title: 'My Initial Scene',
+    passProps: {
+			username: this.state.username,
+		 	password: this.state.password
+		},
+  });
   }
 
 
