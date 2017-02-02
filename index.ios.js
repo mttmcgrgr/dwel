@@ -1,32 +1,24 @@
 
-import SessionForm from './frontend/components/SessionForm';
+import SessionForm from './components/SessionForm';
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  NavigatorIOS
 } from 'react-native';
 
 export default class Dwel extends Component {
   render() {
     return (
-      <View style={styles.container}>
-
-
-        <Text style={styles.welcome}>
-          DWELL
-        </Text>
-
-        <SessionForm/>
-        <Text style={styles.instructions}>
-
-        </Text>
-        <Text style={styles.instructions}>
-
-        </Text>
-
-      </View>
+      <NavigatorIOS
+        initialRoute={{
+          component: SessionForm,
+          title: 'Create Account',
+        }}
+        style={{flex: 1, backgroundColor: '#259ebc'}}
+      />
     );
   }
 }
