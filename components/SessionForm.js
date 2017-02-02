@@ -14,13 +14,6 @@ class SessionForm extends Component {
 	}
 
 
-
-	update(field) {
-		return e => this.setState({
-			[field]: e.currentTarget.value
-		});
-	}
-
 	handleSubmit(e) {
 		e.preventDefault();
 		const user = this.state;
