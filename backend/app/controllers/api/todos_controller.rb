@@ -17,7 +17,7 @@ class Api::TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    if @todo.update(todo_params)
+    if @todo.update(resolved: true)
       render :index
     end
   end
