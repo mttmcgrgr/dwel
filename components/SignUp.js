@@ -1,11 +1,12 @@
 'use strict';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,
-	       TouchableHighlight, TextInput,
-				 Button, Image } from 'react-native';
+	       TouchableOpacity, TextInput,
+				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
+import Login from './Login';
 
-class SessionForm extends Component {
+class SignUp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,7 +15,8 @@ class SessionForm extends Component {
 			errors: ""
 		};
 		this.createAccount = this.createAccount.bind(this);
-		this._onForward = this._onForward.bind(this);
+		this._goToLogin = this._goToLogin.bind(this);
+		this._goToKeycode = this._goToKeycode.bind(this);
 	}
 
 	createAccount(){
@@ -27,24 +29,32 @@ class SessionForm extends Component {
  			  body: JSON.stringify( {user:{
  			    username: this.state.username,
  			    password: this.state.password
- 			  }}).catch(error => {
-           console.error(error);
-					 this.state.erros = error;
-         })
+ 			  }})
  	   	});
 	 }
 
 
-		_onForward() {
+		_goToLogin() {
     this.props.navigator.push({
-    component: Keycode,
-    title: 'Key Code',
+    component: Login,
+    title: 'Log In',
     passProps: {
 			username: this.state.username,
 		 	password: this.state.password
-		},
-  });
-  }
+	  	}
+  	});
+   }
+
+	 _goToKeycode() {
+		this.props.navigator.push({
+		component: Keycode,
+		title: 'Key Code',
+		passProps: {
+		 username: this.state.username,
+		 password: this.state.password
+		 }
+	 });
+	 }
 
 
 
@@ -71,13 +81,26 @@ class SessionForm extends Component {
 					onChangeText={(text) => this.setState({password: text})}
 					value={this.state.password}
 				/>
-				<TouchableHighlight
+			<TouchableOpacity
 					style={styles.button}
-					onPress={this.createAccount}>
+					onPress={this._goToKeycode}>
 	          <Text style={styles.buttonText}>
 	            Continue
 	          </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
+				<Text style={styles.title}>
+					Or
+				</Text>
+				<TouchableOpacity
+						style={styles.button}
+						onPress={this._goToLogin}>
+		          <Text style={styles.buttonText}>
+		            Login
+		          </Text>
+	        </TouchableOpacity>
+				<Text style={styles.title}>
+					{this.state.errors}
+				</Text>
 		</View>
 		);
 	}
@@ -159,10 +182,11 @@ const styles = StyleSheet.create({
 		height: 30,
 		width: 200,
 		flexDirection: 'row',
-	  justifyContent: 'space-between',
+	  justifyContent: 'center',
 		alignItems: 'center',
 		left: 70,
-		padding: 10,
+		paddingBottom: 10,
+		paddingTop: 10,
 		textAlign: 'center'
 
 	}
@@ -170,4 +194,4 @@ const styles = StyleSheet.create({
 });
 
 
-module.exports = SessionForm;
+module.exports = SignUp;

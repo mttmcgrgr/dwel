@@ -1,5 +1,5 @@
 
-import SessionForm from './components/SessionForm';
+import SignUp from './components/SignUp';
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -14,7 +14,7 @@ export default class Dwel extends Component {
     return (
       <NavigatorIOS
         initialRoute={{
-          component: SessionForm,
+          component: SignUp,
           title: 'Create Account',
         }}
         style={{flex: 1, backgroundColor: '#259ebc'}}
