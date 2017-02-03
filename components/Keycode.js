@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet,
 	       TouchableHighlight, TextInput,
 				 Button, Image } from 'react-native';
+import groupIndex from './groups/group_index';
 
 class Keycode extends Component {
 	constructor(props) {
@@ -14,7 +15,7 @@ class Keycode extends Component {
 			errors: ""
 		};
 		this.createAccount = this.createAccount.bind(this);
-		this._onForward = this._onForward.bind(this);
+		this._goToGroupIndex = this._goToGroupIndex.bind(this);
     this.keyGenerator = this.keyGenerator.bind(this);
 	}
 
@@ -33,14 +34,14 @@ class Keycode extends Component {
   	}
 
 
-		_onForward() {
+		_goToGroupIndex() {
     this.props.navigator.push({
-    component: Keycode,
-    title: 'Key Code',
+    component: groupIndex,
+    title: 'Your Groups',
     passProps: {
 			username: this.state.username,
 		 	password: this.state.password
-		},
+		}
   });
   }
 
@@ -54,7 +55,7 @@ class Keycode extends Component {
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
-					Enter Your Key Or Use Key Below
+					Enter Your Key Or Create New Group
 				</Text>
 				<Image
 					style={styles.logo}
@@ -69,16 +70,20 @@ class Keycode extends Component {
 				<TouchableHighlight
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
-	            Continue
+	            Join Group
 	          </Text>
         </TouchableHighlight>
         <Text style={styles.title}>
-              New Key
+              OR
         </Text>
+				<TouchableHighlight
+					onPress={this._goToGroupIndex}
+					style={styles.button}>
+	          <Text style={styles.buttonText}>
+	            Create New Group
+	          </Text>
+        </TouchableHighlight>
 
-        <Text style={styles.title}>
-          {this.keyGenerator()}
-        </Text>
 		</View>
 		);
 	}
@@ -159,13 +164,11 @@ const styles = StyleSheet.create({
 	title: {
 		height: 30,
 		width: 200,
-		flexDirection: 'row',
-	  justifyContent: 'space-between',
+	  justifyContent: 'center',
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
 		textAlign: 'center'
-
 	}
 
 });

@@ -20,9 +20,9 @@ class todosIndex extends React.Component {
     super(props)
 
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(GROUPS ARRAY),
-    };
+    // this.state = {
+    //   dataSource: ds.cloneWithRows(GROUPS )
+    // };
   }
 
   render () {
@@ -30,7 +30,10 @@ class todosIndex extends React.Component {
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(data) => <GroupIndexItem {...data}/>}
+        renderRow={(data) => <GroupIndexItem {...data}>
+      </ListView>
     </View>
   }
 }
+
+module.exports
