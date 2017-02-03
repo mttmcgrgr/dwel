@@ -4,6 +4,7 @@ import { View, Text, StyleSheet,
 	       TouchableOpacity, TextInput,
 				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
+import GroupIndex from '../groups/group_index';
 
 class Login extends Component {
 	constructor(props) {
@@ -36,6 +37,19 @@ class Login extends Component {
 			});
 	 }
 
+	 _goToGroupIndex() {
+	 this.props.navigator.push({
+	 component: GroupIndex,
+	 title: 'Your Groups',
+	 passProps: {
+		 username: this.state.username,
+		 password: this.state.password,
+		 keycode: this.state.keycode,
+		 currentUser: this.state.currentUser
+	 }
+ });
+ }
+
 
 	render() {
 		return (
@@ -45,7 +59,7 @@ class Login extends Component {
 				</Text>
 				<Image
 					style={styles.logo}
-					source={require('../../images/logo.png')}
+					source={require('../../../images/logo.png')}
 				/>
 				<TextInput
 					style={styles.usernameInput}
@@ -61,6 +75,7 @@ class Login extends Component {
 				/>
 			<TouchableOpacity
 					onPress={this.Login}
+					onPress={this._goToGroupIndex}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
 	            Log In

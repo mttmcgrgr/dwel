@@ -1,5 +1,5 @@
 
-import SignUp from './components/session/SignUp';
+import SignUp from './app/components/session/SignUp';
 import React, { Component } from 'react';
 import {
   AppRegistry,

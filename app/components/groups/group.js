@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Form, Image, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
 import TodosIndex from '../todos/todos_index';
-import TodoForm from '../todos/todos_form'
+import TodoForm from '../todos/todos_form';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,7 +53,7 @@ class Group extends React.Component {
         <View>
           <Image
             style={styles.addTodoButton}
-            source={require('../../images/plus.png')}
+            source={require('../../../images/plus.png')}
             onPress = {this._onForward}/>
         </View>
       </View>

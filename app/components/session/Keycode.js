@@ -72,7 +72,7 @@ class Keycode extends Component {
 				</Text>
 				<Image
 					style={styles.logo}
-					source={require('../../images/logo.png')}
+					source={require('../../../images/logo.png')}
 				/>
 				<TextInput
 					style={styles.passwordInput}
