@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Form, Picker, TextInput, StyleSheet, Button } from 'react-native';
+import Group from '../groups/group';
 
 class TodosForm extends React.Component {
   constructor (props) {
@@ -7,8 +8,19 @@ class TodosForm extends React.Component {
     this.state = {
       body: "",
       type: "",
-      groupId: {this.props.groupId}
+      group_id: {this.props.groupId}
     }
+  }
+
+  _onForward() {
+    this.props.navigator.push({
+      component: Group,
+      title: 'Key Code',
+      passProps: {
+        username: this.state.username,
+        password: this.state.password
+      },
+    });
   }
 
   render () {
@@ -26,7 +38,7 @@ class TodosForm extends React.Component {
           onChangeText={(text) => this.setState({body: text})}
           value={this.state.body}
         />
-      </View> 
+      </View>
     )
   }
 }

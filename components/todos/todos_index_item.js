@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
-
+import TodoDetail from './todo_detail';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,14 +16,28 @@ const styles = StyleSheet.create({
 });
 
 class TodosIndexItem extends React.Componenet {
+
+
+  _onForward() {
+    this.props.navigator.push({
+      component: TodoDetail,
+      title: 'Todo',
+      passProps: {
+        todo: this.props.todo,
+      },
+    });
+  }
+
   render () {
     return (
-      <View style={styles.container}>
+      <View
+          style={styles.container}
+           onPress={this._onForward}>
         <Text style={styles.text}>
-          {props.group.address}
+          {this.props.group.address}
         </Text>
         <Text style={styles.text}>
-          `${props.group.todo_count} todos`
+          `${this.props.group.todo_count} todos`
         </Text>
       </View>
     );

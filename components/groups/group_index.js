@@ -13,11 +13,6 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 16,
   },
-  photo: {
-    height: 40,
-    width: 40,
-    borderRadius: 20,
-  },
 });
 
 class todosIndex extends React.Component {

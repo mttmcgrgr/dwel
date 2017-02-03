@@ -8,7 +8,7 @@ class TodosIndex extends React.Component {
 
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(TODOS ARRAY),
+      dataSource: ds.cloneWithRows(this.props.todos),
     };
   }
 
@@ -37,7 +37,7 @@ class TodosIndex extends React.Component {
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(data) => <TodosIndexItem {...data}/>}
+        renderRow={(todo) => <TodosIndexItem {todo}/>}
     </View>
   }
 }
