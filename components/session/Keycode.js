@@ -1,61 +1,66 @@
 'use strict';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,
-	       TouchableOpacity, TextInput,
-				 Button, Image, AsyncStorage, Actions } from 'react-native';
-import Keycode from './Keycode';
-import Login from './Login';
+	       TouchableOpacity,  TextInput,
+				 Button, Image } from 'react-native';
+import GroupIndex from '../groups/group_index';
 
-class SignUp extends Component {
+class Keycode extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			username: "",
 			password: "",
-			errors: ""
+      keycode: "",
+			errors: "",
+			currentUser: ""
 		};
 		this.createAccount = this.createAccount.bind(this);
-		this._goToLogin = this._goToLogin.bind(this);
-		this._goToKeycode = this._goToKeycode.bind(this);
+		this._goToGroupIndex = this._goToGroupIndex.bind(this);
+    this.keyGenerator = this.keyGenerator.bind(this);
+	}
+
+
+	componentWillMount(){
+		this.setState({
+			keycode: this.keyGenerator()
+		});
 	}
 
 	createAccount(){
- 		fetch('http://localhost:3000/api/users', {
- 			  method: 'POST',
- 			  headers: {
- 			    'Accept': 'application/json',
- 			    'Content-Type': 'application/json',
- 			  },
- 			  body: JSON.stringify( {user:{
- 			    username: this.state.username,
- 			    password: this.state.password
- 			  }})
- 	   	});
-	 }
+		fetch('http://localhost:3000/api/users', {
+			  method: 'POST',
+			  headers: {
+			    'Accept': 'application/json',
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify({
+			    username: this.state.username,
+			    password: this.state.password
+			  })
+			});
+  	}
 
 
-		_goToLogin() {
+		_goToGroupIndex() {
     this.props.navigator.push({
-    component: Login,
-    title: 'Log In',
+    component: GroupIndex,
+    title: 'Your Groups',
     passProps: {
 			username: this.state.username,
-		 	password: this.state.password
-	  	}
-  	});
-   }
+		 	password: this.state.password,
+			keycode: this.state.keycode,
+			currentUser: this.state.currentUser
+		}
+  });
+  }
 
-	 _goToKeycode() {
-		this.props.navigator.push({
-		component: Keycode,
-		title: 'Key Code',
-		passProps: {
-		 username: this.state.username,
-		 password: this.state.password
-		 }
-	 });
-	 }
 
+
+
+  keyGenerator(){
+    return Math.random().toString(36).slice(2,8);
+  }
 
 
 
@@ -63,44 +68,35 @@ class SignUp extends Component {
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
-					D W E L
+					Enter Key To Join Group
 				</Text>
 				<Image
 					style={styles.logo}
-					source={require('../images/logo.png')}
-				/>
-				<TextInput
-					style={styles.usernameInput}
-					placeholder="Username"
-					onChangeText={(text) => this.setState({username: text})}
-					value={this.state.username}
+					source={require('../../images/logo.png')}
 				/>
 				<TextInput
 					style={styles.passwordInput}
-					placeholder="Password"
-					onChangeText={(text) => this.setState({password: text})}
-					value={this.state.password}
+					placeholder="Ex: abc123"
+					onChangeText={(text) => this.setState({keycode: text})}
+					value={this.state.keycode}
 				/>
-			<TouchableOpacity
-					style={styles.button}
-					onPress={this._goToKeycode}>
+				<TouchableOpacity
+					style={styles.button}>
 	          <Text style={styles.buttonText}>
-	            Continue
+	            Join Group
 	          </Text>
         </TouchableOpacity>
-				<Text style={styles.title}>
-					Or
-				</Text>
+        <Text style={styles.title}>
+                Or
+        </Text>
 				<TouchableOpacity
-						style={styles.button}
-						onPress={this._goToLogin}>
-		          <Text style={styles.buttonText}>
-		            Login
-		          </Text>
-	        </TouchableOpacity>
-				<Text style={styles.title}>
-					{this.state.errors}
-				</Text>
+					onPress={this._goToGroupIndex}
+					style={styles.button}>
+	          <Text style={styles.buttonText}>
+	            Create New Group
+	          </Text>
+        </TouchableOpacity>
+
 		</View>
 		);
 	}
@@ -123,7 +119,6 @@ const styles = StyleSheet.create({
 	},
 
 	passwordInput: {
-
 		  height: 30,
 			borderColor: 'gray',
 			padding: 10,
@@ -181,17 +176,14 @@ const styles = StyleSheet.create({
 	title: {
 		height: 30,
 		width: 200,
-		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
 		left: 70,
-		paddingBottom: 10,
-		paddingTop: 10,
+		padding: 10,
 		textAlign: 'center'
-
 	}
 
 });
 
 
-module.exports = SignUp;
+module.exports = Keycode;

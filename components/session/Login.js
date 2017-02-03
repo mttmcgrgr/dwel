@@ -1,89 +1,74 @@
 'use strict';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,
-	       TouchableHighlight, TextInput,
-				 Button, Image } from 'react-native';
-import groupIndex from './groups/group_index';
+	       TouchableOpacity, TextInput,
+				 Button, Image, AsyncStorage, Actions } from 'react-native';
+import Keycode from './Keycode';
 
-class Keycode extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			username: "",
 			password: "",
-      keycode: "",
-			errors: ""
+			errors: "",
+			currentUser: ""
 		};
-		this.createAccount = this.createAccount.bind(this);
-		this._goToGroupIndex = this._goToGroupIndex.bind(this);
-    this.keyGenerator = this.keyGenerator.bind(this);
+		this.Login = this.Login.bind(this);
+
 	}
 
-	createAccount(){
-		fetch('http://localhost:3000/api/users', {
-			  method: 'POST',
-			  headers: {
-			    'Accept': 'application/json',
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify({
-			    username: this.state.username,
-			    password: this.state.password
-			  })
+  Login(){
+ 		fetch('http://localhost:3000/api/session', {
+ 			  method: 'POST',
+ 			  headers: {
+ 			    'Accept': 'application/json',
+ 			    'Content-Type': 'application/json',
+ 			  },
+ 			  body: JSON.stringify( {user:{
+ 			    username: this.state.username,
+ 			    password: this.state.password
+ 			  }})
+ 	   	});
+
+			this.setState({
+				currentUser: this.state.username
 			});
-  	}
-
-
-		_goToGroupIndex() {
-    this.props.navigator.push({
-    component: groupIndex,
-    title: 'Your Groups',
-    passProps: {
-			username: this.state.username,
-		 	password: this.state.password
-		}
-  });
-  }
-
-  keyGenerator(){
-    return Math.random().toString(36).slice(2,8);
-  }
-
+	 }
 
 
 	render() {
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
-					Enter Your Key Or Create New Group
+					D W E L
 				</Text>
 				<Image
 					style={styles.logo}
-					source={require('../images/logo.png')}
+					source={require('../../images/logo.png')}
+				/>
+				<TextInput
+					style={styles.usernameInput}
+					placeholder="Username"
+					onChangeText={(text) => this.setState({username: text})}
+					value={this.state.username}
 				/>
 				<TextInput
 					style={styles.passwordInput}
-					placeholder="Ex: abc123"
-					onChangeText={(text) => this.setState({keycode: text})}
-					value={this.state.keycode}
+					placeholder="Password"
+					onChangeText={(text) => this.setState({password: text})}
+					value={this.state.password}
 				/>
-				<TouchableHighlight
+			<TouchableOpacity
+					onPress={this.Login}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
-	            Join Group
+	            Log In
 	          </Text>
-        </TouchableHighlight>
-        <Text style={styles.title}>
-              OR
-        </Text>
-				<TouchableHighlight
-					onPress={this._goToGroupIndex}
-					style={styles.button}>
-	          <Text style={styles.buttonText}>
-	            Create New Group
-	          </Text>
-        </TouchableHighlight>
-
+        </TouchableOpacity>
+				<Text style={styles.title}>
+					{this.state.errors}
+				</Text>
 		</View>
 		);
 	}
@@ -137,6 +122,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
+    marginTop: 10
 	},
 
 	logo: {
@@ -150,7 +136,7 @@ const styles = StyleSheet.create({
 	buttonText: {
 		height: 30,
 		borderColor: 'gray',
-		paddingTop: 8,
+		paddingTop: 10,
 		paddingBottom: 5,
 		fontSize: 12,
 		borderWidth: 1,
@@ -164,14 +150,16 @@ const styles = StyleSheet.create({
 	title: {
 		height: 30,
 		width: 200,
-	  justifyContent: 'center',
+		flexDirection: 'row',
+	  justifyContent: 'space-between',
 		alignItems: 'center',
 		left: 70,
-		padding: 10,
+		padding: 20,
 		textAlign: 'center'
+
 	}
 
 });
 
 
-module.exports = Keycode;
+module.exports = Login;

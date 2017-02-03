@@ -4,8 +4,9 @@ import { View, Text, StyleSheet,
 	       TouchableOpacity, TextInput,
 				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
+import Login from './Login';
 
-class Login extends Component {
+class SignUp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,7 +15,8 @@ class Login extends Component {
 			errors: ""
 		};
 		this.createAccount = this.createAccount.bind(this);
-
+		this._goToLogin = this._goToLogin.bind(this);
+		this._goToKeycode = this._goToKeycode.bind(this);
 	}
 
 	createAccount(){
@@ -32,16 +34,27 @@ class Login extends Component {
 	 }
 
 
-	// 	_onForward() {
-  //   this.props.navigator.push({
-  //   component: '',
-  //   title: '',
-  //   passProps: {
-	// 		username: this.state.username,
-	// 	 	password: this.state.password
-	//   	}
-  // 	});
-  //  }
+		_goToLogin() {
+    this.props.navigator.push({
+    component: Login,
+    title: 'Log In',
+    passProps: {
+			username: this.state.username,
+		 	password: this.state.password
+	  	}
+  	});
+   }
+
+	 _goToKeycode() {
+		this.props.navigator.push({
+		component: Keycode,
+		title: 'Key Code',
+		passProps: {
+		 username: this.state.username,
+		 password: this.state.password
+		 }
+	 });
+	 }
 
 
 
@@ -54,7 +67,7 @@ class Login extends Component {
 				</Text>
 				<Image
 					style={styles.logo}
-					source={require('../images/logo.png')}
+					source={require('../../images/logo.png')}
 				/>
 				<TextInput
 					style={styles.usernameInput}
@@ -69,11 +82,22 @@ class Login extends Component {
 					value={this.state.password}
 				/>
 			<TouchableOpacity
-					style={styles.button}>
+					style={styles.button}
+					onPress={this._goToKeycode}>
 	          <Text style={styles.buttonText}>
-	            Continue
+	            Sign Up
 	          </Text>
         </TouchableOpacity>
+				<Text style={styles.title}>
+					Already Have an Account?
+				</Text>
+				<TouchableOpacity
+						style={styles.login}
+						onPress={this._goToLogin}>
+		          <Text style={styles.buttonText}>
+		            Login
+		          </Text>
+	        </TouchableOpacity>
 				<Text style={styles.title}>
 					{this.state.errors}
 				</Text>
@@ -130,7 +154,18 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
-    marginTop: 10
+	},
+
+	login: {
+		height: 30,
+		width: 200,
+		// borderColor: 'gray',
+		flexDirection: 'row',
+	  justifyContent: 'space-between',
+		// backgroundColor: 'white',
+		alignItems: 'center',
+		left: 70,
+		padding: 10,
 	},
 
 	logo: {
@@ -143,13 +178,12 @@ const styles = StyleSheet.create({
 
 	buttonText: {
 		height: 30,
-		borderColor: 'gray',
-		paddingTop: 10,
+		// borderColor: 'gray',
+		paddingTop: 8,
 		paddingBottom: 5,
 		fontSize: 12,
-		borderWidth: 1,
+		// borderWidth: 1,
 		width: 200,
-		backgroundColor: "white",
 		fontWeight: 'bold',
 		textAlign: 'center',
 		left: -10
@@ -159,7 +193,7 @@ const styles = StyleSheet.create({
 		height: 30,
 		width: 200,
 		flexDirection: 'row',
-	  justifyContent: 'space-between',
+	  justifyContent: 'center',
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
@@ -170,4 +204,4 @@ const styles = StyleSheet.create({
 });
 
 
-module.exports = Login;
+module.exports = SignUp;

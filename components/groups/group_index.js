@@ -30,8 +30,7 @@ class todosIndex extends React.Component {
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(data) => <GroupIndexItem {...data}>
-      </ListView>
+        renderRow={(data) => <GroupIndexItem {...data}></GroupIndexItem>
     </View>
   }
 }
