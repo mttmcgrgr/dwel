@@ -3,10 +3,15 @@ import {View, Text, ListView, StyleSheet} from 'react-native';
 import TodosIndexItem from './todos_index_item.js';
 
 const styles = StyleSheet.create({
+  listViewContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
   container: {
     padding: 12,
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'flex-start'
   },
   text: {
     marginLeft: 12,
@@ -27,7 +32,7 @@ class TodosIndex extends React.Component {
 
   render () {
     return (
-      <View>
+      <View style={styles.listViewContainer}>
         <ListView
           contentContainerStyle={styles.container}
           dataSource={this.state.dataSource}

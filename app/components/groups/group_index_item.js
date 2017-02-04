@@ -5,28 +5,26 @@ import GroupHome from './group_home';
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    flexDirection: 'column',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
-    marginTop: 10,
-    borderWidth: 1,
-    backgroundColor: 'gray',
-    borderColor: 'black',
-    borderRadius: 5,
     height: 65,
-    width: 350,
     marginBottom: 5,
-    fontFamily: 'serif'
   },
   text: {
     marginLeft: 12,
     fontSize: 14,
-    marginBottom: 10
   },
   button: {
     padding: 12,
-    flex: 1
+    borderWidth: 1,
+    backgroundColor: 'lightgray',
+    borderColor: 'gray',
+    borderRadius: 5,
+    height: 65,
+    width: 350,
+    fontFamily: 'serif',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+
   }
 });
 

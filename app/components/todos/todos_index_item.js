@@ -4,21 +4,20 @@ import TodoDetail from './todo_detail';
 
 const styles = StyleSheet.create({
   container: {
+    height: 50
+  },
+  todoItem: {
     padding: 12,
-    flexDirection: 'column',
-    alignItems: 'stretch',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flex: 1,
     borderWidth: 1,
-    backgroundColor: 'gray',
-    borderColor: 'black',
+    backgroundColor: 'lightgray',
+    borderColor: 'gray',
     borderRadius: 5,
     height: 40,
     width: 300,
     marginBottom: 5
-  },
-  todoItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
   },
   text: {
     marginLeft: 12,

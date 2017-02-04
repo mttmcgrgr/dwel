@@ -7,11 +7,17 @@ const styles = StyleSheet.create({
   container: {
     height: 100,
     width: 300,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
     borderBottomColor: 'black',
-    borderBottomWidth: 2,
+    borderBottomWidth: 2
+  },
+  groupInfoContainer: {
+    width: 200,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end'
   },
   text: {
     width: 300,
@@ -25,6 +31,16 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#259ebc',
   },
+  addTodoButton: {
+    width: 20,
+    height: 20
+  },
+  addTodoButtonContainer: {
+    height: 40,
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 
@@ -54,19 +70,22 @@ class GroupHome extends React.Component {
 //   });
 // }
 
-// <Image
-//   style={styles.addTodoButton}
-//   source={require('../../images/plus.png')}
-//   onPress = {this._onForward}/>
 
-
+            // onPress = {this._onForward}
 
   render () {
     return (
       <View style={styles.indexPage}>
         <View style={styles.container}>
-          <Text style={styles.text}> {this.props.group.address}</Text>
-          <Text style={styles.text}> {this.props.group.otherUser} </Text>
+          <View style={styles.groupInfoContainer}>
+            <Text style={styles.text}> {this.props.group.address}</Text>
+            <Text style={styles.text}> {this.props.group.otherUser} </Text>
+          </View>
+          <View style={styles.addTodoButtonContainer}>
+            <Image
+              style={styles.addTodoButton}
+              source={require('../../../images/plus.png')}/>
+          </View>
         </View>
         <TodosIndex navigator={this.props.navigator} todos={this.props.group.todos}/>
       </View>
