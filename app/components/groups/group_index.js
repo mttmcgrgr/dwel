@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
+import {View, Text, ListView, StyleSheet} from 'react-native';
 import GroupIndexItem from './group_index_item';
 
 const styles = StyleSheet.create({

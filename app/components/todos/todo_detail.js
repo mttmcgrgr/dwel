@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   todoDetailContainer: {
@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: 'gray',
-    height: 60,
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    height: 40,
     width: 300,
     marginBottom: 5
   },

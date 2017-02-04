@@ -10,6 +10,7 @@ import { createAccount } from '../../actions/session_actions';
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
+		debugger;
 		this.state = {
 			username: "",
 			password: "",
