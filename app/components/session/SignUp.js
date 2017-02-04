@@ -9,6 +9,7 @@ import Login from './Login';
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
+		debugger;
 		this.state = {
 			username: "",
 			password: "",
