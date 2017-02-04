@@ -10,7 +10,6 @@ import { createAccount } from '../../actions/session_actions';
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
-		debugger;
 		this.state = {
 			username: "",
 			password: "",
@@ -20,6 +19,7 @@ class SignUp extends Component {
 		this._goToLogin = this._goToLogin.bind(this);
 		this._goToKeycode = this._goToKeycode.bind(this);
 		this.createUser = this.createUser.bind(this);
+		this.createAccount = createAccount;
 	}
 
 
