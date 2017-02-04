@@ -1,5 +1,5 @@
 import { RECEIVE_USER,
-         RECEIVE_ERRORS } from '../actions/authentication_actions';
+         RECEIVE_ERRORS } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 const _defaultState = Object.freeze({
