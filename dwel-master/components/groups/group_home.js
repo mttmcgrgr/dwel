@@ -5,19 +5,23 @@ import TodosIndex from '../todos/todos_index';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 150,
+    width: 350,
     padding: 12,
     flexDirection: 'column',
-    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'gray'
   },
   text: {
+    width: 200,
     marginLeft: 12,
     fontSize: 16,
   },
   indexPage: {
     flex: 1,
-    alignItems: "stretch",
-    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "flex-start",
     padding: 10,
     backgroundColor: '#259ebc',
   },
@@ -65,9 +69,7 @@ class GroupHome extends React.Component {
           <Text style={styles.text}> {this.props.group.otherUser} </Text>
           <Text style={styles.text}> {this.props.group.address}</Text>
         </View>
-        <View style={styles.container}>
-          <TodosIndex todos={this.props.group.todos}/>
-        </View>
+        <TodosIndex navigator={this.props.navigator} todos={this.props.group.todos}/>
       </View>
     );
   }

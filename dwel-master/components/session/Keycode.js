@@ -51,7 +51,7 @@ class Keycode extends Component {
 		 	password: this.state.password,
 			keycode: this.state.keycode,
 			currentUser: this.state.currentUser,
-			groups: [{id: 1, address: "ADDRESS", otherUser: "GROUP MEMBER USERNAME",
+			groups: [{id: 1, address: "ADDRESS", otherUser: "GROUP MEMBER",
 	      todos: [{description: "DESCRIPTION", body: "BODY", category: "CATEGORY", resolved: false}, {description: "DESCRIPTION2", body: "BODY2", category: "CATEGORY2", resolved: false}]},
 				{id: 1, address: "ADDRESS", otherUser: "GROUP MEMBER USERNAME",
 		      todos: [{description: "DESCRIPTION", body: "BODY", category: "CATEGORY", resolved: false}, {description: "DESCRIPTION2", body: "BODY2", category: "CATEGORY2", resolved: false}]}]

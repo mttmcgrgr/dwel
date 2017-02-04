@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
-// import TodoDetail from './todo_detail';
+import {View, Text, TouchableOpacity, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
+import TodoDetail from './todo_detail';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,9 +10,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: 'gray',
-    height: 100,
+    height: 60,
     width: 300,
     marginBottom: 5
+  },
+  todoItem: {
+    flexDirection: 'row'
   },
   text: {
     marginLeft: 12,
@@ -22,32 +25,35 @@ const styles = StyleSheet.create({
 
 class TodosIndexItem extends React.Component {
 
-  //
-  // _onForward() {
-  //   this.props.navigator.push({
-  //     component: TodoDetail,
-  //     title: 'Todo',
-  //     passProps: {
-  //       todo: this.props.todo,
-  //     },
-  //   });
-  // }
-  //
-  // <TouchableOpacity
-  //   onPress={this._onForward}>
-  //   <Text style={styles.text}>
-  //     {this.props.group.address}
-  //   </Text>
-  //   <Text style={styles.text}>
-  //     {this.props.group.todos.length} outstanding todo(s)
-  //   </Text>
-  // </TouchableOpacity>
+  constructor (props) {
+    super(props);
+    this._onForward = this._onForward.bind(this);
+  }
 
+  _onForward() {
+    this.props.navigator.push({
+      component: TodoDetail,
+      title: 'Todo',
+      passProps: {
+        todo: this.props.todo
+      }
+    });
+  }
+  //
 
   render () {
     return (
       <View style={styles.container}>
-        <Text>{this.props.todo.description}</Text>
+        <TouchableOpacity
+          onPress={this._onForward}
+          style={styles.todoItem}>
+          <Text style={styles.text}>
+            {this.props.todo.description}
+          </Text>
+          <Text style={styles.text}>
+            resolved: {this.props.todo.resolved}
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

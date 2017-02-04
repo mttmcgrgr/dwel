@@ -11,14 +11,7 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 12,
     fontSize: 16,
-  },
-  indexPage: {
-    flex: 1,
-    alignItems: "stretch",
-    justifyContent: "center",
-    padding: 10,
-    backgroundColor: '#259ebc',
-  },
+  }
 });
 
 class TodosIndex extends React.Component {
