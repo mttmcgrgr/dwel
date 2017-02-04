@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import TodoDetail from './todo_detail';
 
 const styles = StyleSheet.create({
@@ -9,17 +9,20 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: 'gray',
-    height: 60,
+    backgroundColor: 'gray',
+    borderColor: 'black',
+    borderRadius: 5,
+    height: 40,
     width: 300,
     marginBottom: 5
   },
   todoItem: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   text: {
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 14,
   }
 });
 
