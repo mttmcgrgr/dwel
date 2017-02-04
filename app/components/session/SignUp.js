@@ -5,6 +5,7 @@ import { View, Text, StyleSheet,
 				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
 import Login from './Login';
+import { createAccount } from '../../actions/session_actions';
 
 class SignUp extends Component {
 	constructor(props) {
@@ -12,17 +13,14 @@ class SignUp extends Component {
 		this.state = {
 			username: "",
 			password: "",
-			errors: ""
+			errors: "",
+		currentUser: ""
 		};
-		this.createAccount = this.createAccount.bind(this);
 		this._goToLogin = this._goToLogin.bind(this);
 		this._goToKeycode = this._goToKeycode.bind(this);
+		this.createUser = this.createUser.bind(this);
 	}
 
-	createAccount(){
-		debugger;
- 		this.props.registerUser( { user: {username: "victorg", password: "password"} } ).then( (data)  => console.log(data));
-	 }
 
 
 		_goToLogin() {
@@ -48,9 +46,29 @@ class SignUp extends Component {
 	 }
 
 
+	 createUser(){
+		 let user = {
+			 username: this.state.username,
+			 password: this.state.password
+		 };
+		 createAccount(user).then(response => {
+        if (response.responseData.session_token) {
+					this.setState({
+					currentUser: response.responseData.username
+				});
+        } else {
+          this.setState({
+            errors: response.responseData
+          });
+        }
+      });
+     }
 
 
-	render() {
+
+
+
+	render(){
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
@@ -74,7 +92,7 @@ class SignUp extends Component {
 				/>
 			<TouchableOpacity
 					style={styles.button}
-					onPress={this._goToKeycode}>
+					onPress={this.createUser}>
 	          <Text style={styles.buttonText}>
 	            Sign Up
 	          </Text>
@@ -93,7 +111,7 @@ class SignUp extends Component {
 					{this.state.errors}
 				</Text>
 		</View>
-		);
+	);
 	}
 
 }
@@ -189,7 +207,6 @@ const styles = StyleSheet.create({
 		left: 70,
 		padding: 10,
 		textAlign: 'center'
-
 	}
 
 });

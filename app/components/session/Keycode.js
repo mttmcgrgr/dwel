@@ -1,8 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,
-	       TouchableOpacity,  TextInput,
-				 Button, Image } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity,
+         TextInput, Button, Image } from 'react-native';
 import GroupIndex from '../groups/group_index';
 
 class Keycode extends Component {

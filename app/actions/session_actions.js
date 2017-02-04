@@ -13,8 +13,8 @@ export const receiveErrors = errors => ({
   errors
 });
 
-export const registerUser = user => dispatch => (
-  APIUtil.registerUser(user)
+export const createAccount = user => dispatch => (
+  APIUtil.createAccount(user)
     .then((response) => response.json())
     .then(responseData => dispatch(receiveUser(responseData)))
     .catch(err => dispatch(receiveErrors(err.responseJSON)))
