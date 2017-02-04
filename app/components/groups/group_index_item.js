@@ -1,25 +1,32 @@
 import React from 'react';
-import {View, Text, Form, Picker, TouchableOpacity, ListView, TextInput, StyleSheet, Button } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import GroupHome from './group_home';
 
 
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    padding: 12,
     flexDirection: 'column',
     alignItems: 'stretch',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 10,
     borderWidth: 1,
-    borderColor: 'gray',
-    height: 100,
-    width: 300,
-    marginBottom: 5
+    backgroundColor: 'gray',
+    borderColor: 'black',
+    borderRadius: 5,
+    height: 65,
+    width: 350,
+    marginBottom: 5,
+    fontFamily: 'serif'
   },
   text: {
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 14,
     marginBottom: 10
+  },
+  button: {
+    padding: 12,
+    flex: 1
   }
 });
 
@@ -44,6 +51,7 @@ class GroupIndexItem extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
+          style={styles.button}
           onPress={this._onForward}>
           <Text style={styles.text}>
             {this.props.group.address}
