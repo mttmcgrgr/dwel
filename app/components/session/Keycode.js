@@ -12,19 +12,13 @@ class Keycode extends Component {
 			password: "",
       keycode: "",
 			errors: "",
-			currentUser: ""
+			currentUser: this.props.currentUser
 		};
 		this.createAccount = this.createAccount.bind(this);
 		this._goToGroupIndex = this._goToGroupIndex.bind(this);
     this.keyGenerator = this.keyGenerator.bind(this);
 	}
 
-
-	componentWillMount(){
-		this.setState({
-			keycode: this.keyGenerator()
-		});
-	}
 
 	createAccount(){
 		fetch('http://localhost:3000/api/users', {
@@ -46,10 +40,8 @@ class Keycode extends Component {
     component: GroupIndex,
     title: 'Your Groups',
     passProps: {
-			username: this.state.username,
-		 	password: this.state.password,
-			keycode: this.state.keycode,
-			currentUser: this.state.currentUser,
+			keycode: this.keyGenerator,
+			currentUser: this.props.currentUser,
 			groups: [{id: 1, address: "650 S. Spring St. Apt. 1006", otherUser: "Barry Shy",
 			todos: [{description: "Fix sink", body: "the sink has been leaking for days", category: "plumbing", resolved: false},
 			{description: "Ants", body: "There are ants coming out of the wall behind the couch", category: "pests", resolved: false}]},
@@ -70,6 +62,8 @@ class Keycode extends Component {
 
 
 	render() {
+    console.log(this.props.currentUser);
+    console.log(this.state.currentUser);
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
@@ -101,7 +95,6 @@ class Keycode extends Component {
 	            Create New Group
 	          </Text>
         </TouchableOpacity>
-
 		</View>
 		);
 	}
@@ -150,7 +143,7 @@ const styles = StyleSheet.create({
 		borderColor: 'gray',
 		flexDirection: 'row',
 	  justifyContent: 'space-between',
-		backgroundColor: 'white',
+		backgroundColor: '#efbc45',
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
@@ -172,7 +165,7 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		borderWidth: 1,
 		width: 200,
-		backgroundColor: "white",
+		backgroundColor: "#efbc45",
 		fontWeight: 'bold',
 		textAlign: 'center',
 		left: -10

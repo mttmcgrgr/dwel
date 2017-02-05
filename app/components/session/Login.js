@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
 		borderColor: 'gray',
 		flexDirection: 'row',
 	  justifyContent: 'space-between',
-		backgroundColor: 'white',
+		backgroundColor: '#efbc45',
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		borderWidth: 1,
 		width: 200,
-		backgroundColor: "white",
+		backgroundColor: "#efbc45",
 		fontWeight: 'bold',
 		textAlign: 'center',
 		left: -10

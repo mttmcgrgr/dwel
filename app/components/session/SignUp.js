@@ -5,8 +5,7 @@ import { View, Text, StyleSheet,
 				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
 import Login from './Login';
-import { createAccount } from '../../actions/session_actions';
-import * as APIUtil from '../../util/session_api_util';
+
 
 
 class SignUp extends Component {
@@ -16,11 +15,12 @@ class SignUp extends Component {
 			username: "",
 			password: "",
 			errors: "",
-		currentUser: ""
+		currentUser: {}
 		};
 		this._goToLogin = this._goToLogin.bind(this);
 		this._goToKeycode = this._goToKeycode.bind(this);
-		this.createUser = this.createUser.bind(this);
+		this.createLandlord = this.createLandlord.bind(this);
+		this.createTenant = this.createTenant.bind(this);
 	}
 
 
@@ -37,22 +37,19 @@ class SignUp extends Component {
    }
 
 	 _goToKeycode() {
+		if(this.state.currentUser.username){
 		this.props.navigator.push({
-		component: Keycode,
-		title: 'Key Code',
-		passProps: {
-		 username: this.state.username,
-		 password: this.state.password
-		 }
-	 });
+			component: Keycode,
+			title: 'Key Code',
+			passProps: {
+			 currentUser: this.state.currentUser
+			 }
+	   });
+    }
 	 }
 
-	 //  let user = {
-	 // 	 username: this.state.username,
-	 // 	 password: this.state.password
 
-	 createUser(){
-
+	 createLandlord(){
 		 fetch('http://localhost:3000/api/users', {
 				 method: 'POST',
 				 headers: {
@@ -61,25 +58,74 @@ class SignUp extends Component {
 				 },
 				 body: JSON.stringify( {user:{
 					 username: this.state.username,
-					 password: this.state.password
+					 password: this.state.password,
+					 landlord: "yes"
 				 }})
 			 })
 			 .then((response) => response.json())
 			.then(response => {
-
         if (response.username){
 					this.setState({
-					currentUser: response.username
+					currentUser: response
 				 });
+				 this.props.navigator.push({
+		 			component: Keycode,
+		 			title: 'Key Code',
+		 			passProps: {
+		 			 currentUser: response
+		 			 }
+		 	   });
         } else {
           this.setState({
-            errors: response.responseData
+            errors: response[0],
+						username: "",
+						password: ""
           });
         }
       });
-			console.log(this.state);
 
+			setTimeout(this._goToKeycode, 500);
      }
+
+
+
+		 createTenant(){
+			 fetch('http://localhost:3000/api/users', {
+					 method: 'POST',
+					 headers: {
+						 'Accept': 'application/json',
+						 'Content-Type': 'application/json',
+					 },
+					 body: JSON.stringify( {user:{
+						 username: this.state.username,
+						 password: this.state.password,
+						 landlord: "no"
+					 }})
+				 })
+				 .then((response) => response.json())
+				.then(response => {
+	        if (response.username){
+						this.setState({
+						currentUser: response.username
+					 });
+					 this.props.navigator.push({
+			 			component: Keycode,
+			 			title: 'Key Code',
+			 			passProps: {
+			 			 currentUser: response
+			 			 }
+			 	   });
+	        } else {
+	          this.setState({
+	            errors: response[0],
+							username: "",
+							password: ""
+	          });
+	        }
+	      });
+
+				this._goToKeycode();
+	     }
 
 
 
@@ -95,6 +141,9 @@ class SignUp extends Component {
 					style={styles.logo}
 					source={require('../../../images/logo.png')}
 				/>
+				<Text style={styles.title}>
+					Create Account
+				</Text>
 				<TextInput
 					style={styles.usernameInput}
 					placeholder="Username"
@@ -107,11 +156,21 @@ class SignUp extends Component {
 					onChangeText={(text) => this.setState({password: text})}
 					value={this.state.password}
 				/>
+				<Text style={styles.title}>
+					Are You a Landlord?
+				</Text>
+				<TouchableOpacity
+						style={styles.button}
+						onPress={this.createLandlord}>
+		          <Text style={styles.buttonText}>
+		            Yes
+		          </Text>
+	        </TouchableOpacity>
 			<TouchableOpacity
 					style={styles.button}
-					onPress={this.createUser}>
+					onPress={this.createTenant}>
 	          <Text style={styles.buttonText}>
-	            Sign Up
+	             No
 	          </Text>
         </TouchableOpacity>
 				<Text style={styles.title}>
@@ -124,7 +183,7 @@ class SignUp extends Component {
 		            Login
 		          </Text>
 	        </TouchableOpacity>
-				<Text style={styles.title}>
+				<Text style={styles.errors}>
 					{this.state.errors}
 				</Text>
 		</View>
@@ -173,13 +232,14 @@ const styles = StyleSheet.create({
 	button: {
 		height: 30,
 		width: 200,
+		borderWidth: 1,
 		borderColor: 'gray',
 		flexDirection: 'row',
-	  justifyContent: 'space-between',
-		backgroundColor: 'white',
+	  justifyContent: "center",
+		backgroundColor: '#efbc45',
 		alignItems: 'center',
 		left: 70,
-		padding: 10,
+		marginTop: 5
 	},
 
 	login: {
@@ -203,21 +263,31 @@ const styles = StyleSheet.create({
 	},
 
 	buttonText: {
-		height: 30,
-		// borderColor: 'gray',
+		flex: 1,
+		height: 25,
 		paddingTop: 8,
-		paddingBottom: 5,
+		paddingBottom: 10,
 		fontSize: 12,
-		// borderWidth: 1,
-		width: 200,
+		width: 190,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		left: -10
+		justifyContent: "center"
 	},
 
 	title: {
 		height: 30,
 		width: 200,
+		flexDirection: 'row',
+	  justifyContent: 'center',
+		alignItems: 'center',
+		left: 70,
+		padding: 10,
+		textAlign: 'center'
+	},
+	errors: {
+		height: 30,
+		width: 200,
+		color: "red",
 		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
