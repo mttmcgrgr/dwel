@@ -16,8 +16,8 @@ export const receiveErrors = errors => ({
 export const createAccount = user => dispatch => (
   APIUtil.createAccount(user)
     .then((response) => response.json())
-    .then(responseData => dispatch(receiveUser(responseData)))
-    .catch(err => dispatch(receiveErrors(err.responseJSON)))
+    // .then(responseData => dispatch(receiveUser(responseData)))
+    // .catch(err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const loginAccount = user => dispatch => (

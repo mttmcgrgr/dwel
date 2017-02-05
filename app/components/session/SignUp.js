@@ -6,6 +6,8 @@ import { View, Text, StyleSheet,
 import Keycode from './Keycode';
 import Login from './Login';
 import { createAccount } from '../../actions/session_actions';
+import * as APIUtil from '../../util/session_api_util';
+
 
 class SignUp extends Component {
 	constructor(props) {
@@ -19,7 +21,6 @@ class SignUp extends Component {
 		this._goToLogin = this._goToLogin.bind(this);
 		this._goToKeycode = this._goToKeycode.bind(this);
 		this.createUser = this.createUser.bind(this);
-		this.createAccount = createAccount;
 	}
 
 
@@ -46,23 +47,38 @@ class SignUp extends Component {
 	 });
 	 }
 
+	 //  let user = {
+	 // 	 username: this.state.username,
+	 // 	 password: this.state.password
 
 	 createUser(){
-		 let user = {
-			 username: this.state.username,
-			 password: this.state.password
-		 };
-		 createAccount(user).then(response => {
-        if (response.responseData.session_token) {
+
+		 fetch('http://localhost:3000/api/users', {
+				 method: 'POST',
+				 headers: {
+					 'Accept': 'application/json',
+					 'Content-Type': 'application/json',
+				 },
+				 body: JSON.stringify( {user:{
+					 username: this.state.username,
+					 password: this.state.password
+				 }})
+			 })
+			 .then((response) => response.json())
+			.then(response => {
+
+        if (response.username){
 					this.setState({
-					currentUser: response.responseData.username
-				});
+					currentUser: response.username
+				 });
         } else {
           this.setState({
             errors: response.responseData
           });
         }
       });
+			console.log(this.state);
+
      }
 
 
