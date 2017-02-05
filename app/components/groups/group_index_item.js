@@ -1,29 +1,64 @@
 import React from 'react';
-import {View, Text, Form, Picker, ListView, TextInput, StyleSheet, Button } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import GroupHome from './group_home';
 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
+    height: 65,
+    marginBottom: 5,
   },
   text: {
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 14,
+  },
+  button: {
+    padding: 12,
+    borderWidth: 1,
+    backgroundColor: 'lightgray',
+    borderColor: 'gray',
+    borderRadius: 5,
+    height: 65,
+    width: 350,
+    fontFamily: 'serif',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+
   }
 });
-class GroupIndexItem extends React.Componenet {
+
+class GroupIndexItem extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this._onForward = this._onForward.bind(this);
+  }
+
+  _onForward () {
+    this.props.navigator.push({
+      component: GroupHome,
+      title: 'Group',
+      passProps: {
+        group: this.props.group
+      }
+    });
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {props.group.address}
-        </Text>
-        <Text style={styles.text}>
-          `${props.group.todo_count} todos`
-        </Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this._onForward}>
+          <Text style={styles.text}>
+            {this.props.group.address}
+          </Text>
+          <Text style={styles.text}>
+            {this.props.group.todos.length} outstanding todo(s)
+          </Text>
+        </TouchableOpacity>
+
       </View>
     );
   }

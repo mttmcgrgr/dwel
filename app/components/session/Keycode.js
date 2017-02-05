@@ -1,8 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,
-	       TouchableOpacity,  TextInput,
-				 Button, Image } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity,
+         TextInput, Button, Image } from 'react-native';
 import GroupIndex from '../groups/group_index';
 
 class Keycode extends Component {
@@ -50,7 +49,13 @@ class Keycode extends Component {
 			username: this.state.username,
 		 	password: this.state.password,
 			keycode: this.state.keycode,
-			currentUser: this.state.currentUser
+			currentUser: this.state.currentUser,
+			groups: [{id: 1, address: "650 S. Spring St. Apt. 1006", otherUser: "Barry Shy",
+			todos: [{description: "Fix sink", body: "the sink has been leaking for days", category: "plumbing", resolved: false},
+			{description: "Ants", body: "There are ants coming out of the wall behind the couch", category: "pests", resolved: false}]},
+			{id: 2, address: "1228 Evelyn Ave.", otherUser: "Sally Rice",
+				todos: [{description: "Air conditioner broken", body: "The air conditioner isn't working", category: "utilities", resolved: false},
+				{description: "Washing machine is leaking", body: "It't getting EVERYWHERE", category: "plumbing", resolved: false}]}]
 		}
   });
   }

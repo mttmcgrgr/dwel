@@ -7,28 +7,28 @@ class TodosForm extends React.Component {
     super(props);
     this.state = {
       body: "",
-      type: "",
-      group_id: {this.props.groupId}
+      category: "",
+      group_id: {this.props.group.id}
     }
   }
-
-  _onForward() {
-    this.props.navigator.push({
-      component: Group,
-      title: 'Key Code',
-      passProps: {
-        username: this.state.username,
-        password: this.state.password
-      },
-    });
-  }
+  // 
+  // _onForward() {
+  //   this.props.navigator.push({
+  //     component: Group,
+  //     title: 'Key Code',
+  //     passProps: {
+  //       username: this.state.username,
+  //       password: this.state.password
+  //     },
+  //   });
+  // }
 
   render () {
     return (
       <View>
         <Picker
           selectedValue={this.state.type}
-          onValueChange={(type) => this.setState({language: type})}>
+          onValueChange={(type) => this.setState({category: type})}>
           <Picker.Item label="Lights" value="lights" />
           <Picker.Item label="Plumbing" value="plumbing" />
           <Picker.Item label="Doors" value="doors" />

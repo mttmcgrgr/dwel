@@ -20,22 +20,32 @@ class Login extends Component {
 	}
 
   Login(){
- 		fetch('http://localhost:3000/api/session', {
- 			  method: 'POST',
- 			  headers: {
- 			    'Accept': 'application/json',
- 			    'Content-Type': 'application/json',
- 			  },
- 			  body: JSON.stringify( {user:{
- 			    username: this.state.username,
- 			    password: this.state.password
- 			  }})
- 	   	});
+		fetch('http://localhost:3000/api/session', {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify( {user:{
+					username: this.state.username,
+					password: this.state.password
+				}})
+			})
+			.then((response) => response.json())
+		 .then(response => {
+			 if (response.username){
+				 this.setState({
+				 currentUser: response.username
+				});
+			 } else {
+				 this.setState({
+					 errors: response.responseData
+				 });
+			 }
+		 });
+		 console.log(this.state);
 
-			this.setState({
-				currentUser: this.state.username
-			});
-	 }
+		}
 
 	 _goToGroupIndex() {
 	 this.props.navigator.push({
