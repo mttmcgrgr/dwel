@@ -1,7 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
+import CommentIndex from '../comments/comments_index.js';
 
 const styles = StyleSheet.create({
+  todoDetailPage: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 60,
+    padding: 10,
+    backgroundColor: '#259ebc',
+  },
   todoDetailContainer: {
     padding: 12,
     flexDirection: 'row',
@@ -17,21 +27,90 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 16,
   },
-  todoDetailPage: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop: 60,
+  commentIndex: {
+    flex: 0.95,
+
+  },
+  buttonText: {
+		height: 30,
+		// borderColor: 'gray',
+		paddingTop: 8,
+		paddingBottom: 5,
+		fontSize: 12,
+		// borderWidth: 1,
+		fontWeight: 'bold',
+		textAlign: 'center',
+		left: -10
+	},
+  commentContainer: {
+    flex: .05,
+    width: 260,
+    flexDirection: 'row',
+    alignItems: "stretch",
+    justifyContent: "center",
     padding: 10,
-    backgroundColor: '#259ebc',
-  }
+    backgroundColor: 'orange',
+
+  },
+  button: {
+    flex: .2,
+		borderColor: 'gray',
+	  justifyContent: 'space-between',
+		backgroundColor: 'white',
+		alignItems: 'center'
+	},
+  commentInput:{
+		  flex: .8,
+			borderColor: 'gray',
+			fontSize: 12,
+			borderWidth: 1,
+			backgroundColor: "white",
+
+	},
 });
 class TodoDetail extends React.Component {
 
   constructor (props) {
     super(props);
+    this.comments = this.props.todo.comments;
+
+    this.state = {
+      comment: ""
+    }
   }
+
+  post() {
+    debugger;
+    fetch('http://localhost:3000/api/comments', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( {comment:{
+          comment: this.state.comment,
+          todo_id: this.props.todo.id,
+          username: "example"
+        }})
+      })
+      .then((response) => response.json())
+     .then(response => {
+
+       if (response.comment){
+         this.setState({
+         comment: ""
+        });
+        this.comments.push({id: 1, comment: "test comment", username: "Victor"})
+       } else {
+         this.setState({
+           errors: response.responseData
+         });
+       }
+     });
+    //  console.log(this.state);
+
+    }
+
 
   render () {
     return (
@@ -43,6 +122,23 @@ class TodoDetail extends React.Component {
           <Text style={styles.text}>
             resolved: {this.props.todo.resolved}
           </Text>
+        </View>
+        <View style={styles.commentIndex}>
+          <CommentIndex navigator={this.props.navigator} comments={this.props.todo.comments}/>
+        </View>
+        <View style={styles.commentContainer}>
+          <TextInput
+            style={styles.commentInput}
+            onChangeText={(text) => this.setState({comment: text})}
+            value={this.state.comment}
+            />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={this.post}>
+            <Text style={styles.buttonText}>
+              Post
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
