@@ -105,20 +105,20 @@ class TodoDetail extends React.Component {
       })
       .then((response) => response.json())
      .then(response => {
-
-       if (response.comment){
-         let comments = this.state.comments;
-         comments.push(response.comment);
-         this.setState({
-         comment: "",
-         comments
-        });
-
-       } else {
-         this.setState({
-           errors: response.responseData
-         });
-       }
+console.log(response);
+      //  if (response.comment){
+      //    let comments = this.state.comments;
+      //    comments.push(response.comment);
+      //    this.setState({
+      //    comment: "",
+      //    comments
+      //   });
+       //
+      //  } else {
+      //    this.setState({
+      //      errors: response.responseData
+      //    });
+      //  }
      });
     //  console.log(this.state);
 
