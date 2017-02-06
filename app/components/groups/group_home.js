@@ -20,10 +20,22 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-end'
   },
+  address: {
+    width: 300,
+    marginLeft: 12,
+    fontSize: 16,
+    top: 10,
+    height: 10
+  },
   text: {
     width: 300,
     marginLeft: 12,
     fontSize: 16,
+  },
+  picker: {
+    backgroundColor: "#c9ced6",
+    height: 300,
+    borderWidth: 1
   },
   indexPage: {
     flex: 1,
@@ -36,7 +48,8 @@ const styles = StyleSheet.create({
   },
   addTodoButton: {
     width: 20,
-    height: 20
+    height: 20,
+    right: -35
   },
   addTodoButtonContainer: {
     height: 40,
@@ -67,7 +80,7 @@ const styles = StyleSheet.create({
   bodyInput: {
     borderColor: 'gray',
     borderWidth: 1,
-    height: 100,
+    height: 50,
     width: 300,
     padding: 10,
     fontSize: 12,
@@ -83,14 +96,12 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     flex: 1,
-    height: 40,
-    paddingTop: 8,
-    paddingBottom: 10,
+    justifyContent: "center",
     width: 190,
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 20,
-    justifyContent: "center"
+    marginBottom: 10
   },
   button: {
     height: 50,
@@ -101,8 +112,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: '#efbc45',
     alignItems: 'center',
-    left: 40,
-    marginTop: 5
+    left: 10,
+    paddingTop: 10,
+    bottom: -30
   },
 
 });
@@ -111,7 +123,7 @@ const styles = StyleSheet.create({
 class GroupHome extends React.Component {
   constructor(props) {
     super(props);
-    ;
+
     this.changeFormVisibility = this.changeFormVisibility.bind(this);
     this.formVisibility = this.formVisibility.bind(this);
     this.createNewTodo = this.createNewTodo.bind(this);
@@ -122,7 +134,7 @@ class GroupHome extends React.Component {
       visibleForm: false,
       todos: this.props.group.todos,
       errors: ""
-    }
+    };
   }
   createNewTodo(){
     fetch('http://localhost:3000/api/todos', {
@@ -140,7 +152,7 @@ class GroupHome extends React.Component {
       })
       .then((response) => response.json())
      .then(response => {
-       console.log(response);
+
        if (response.length > 0){
          this.setState({
          todos: response,
@@ -177,6 +189,9 @@ class GroupHome extends React.Component {
               <Picker.Item label="Lights" value="lights" />
               <Picker.Item label="Plumbing" value="plumbing" />
               <Picker.Item label="Doors" value="doors" />
+              <Picker.Item label="Electrical" value="electrical" />
+              <Picker.Item label="Pests" value="pests" />
+              <Picker.Item label="Roof" value="roof" />
               <Picker.Item label="Windows" value="windows" />
             </Picker>
             <TouchableOpacity
@@ -187,9 +202,8 @@ class GroupHome extends React.Component {
                   </Text>
                </TouchableOpacity>
           </View>
-        )
+        );
       } else {
-        console.log(this.state.todos);
         return (
           <View style={styles.listViewContainer}>
             <ScrollView>{this.state.todos.map( (data) => (
@@ -197,15 +211,15 @@ class GroupHome extends React.Component {
               navigator={this.props.navigator}
               todo={data}/>))}</ScrollView>
           </View>
-        )
+        );
       }
     }
 
     changeFormVisibility () {
       if (this.state.visibleForm) {
-        this.setState({visibleForm: false})
+        this.setState({visibleForm: false});
       } else {
-        this.setState({visibleForm: true})
+        this.setState({visibleForm: true});
       }
     }
 

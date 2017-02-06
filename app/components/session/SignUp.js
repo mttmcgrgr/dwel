@@ -147,6 +147,7 @@ class SignUp extends Component {
 				</Text>
 				<TextInput
 					style={styles.usernameInput}
+					autoComplete={false}
 					placeholder="Username"
 					onChangeText={(text) => this.setState({username: text})}
 					value={this.state.username}

@@ -75,6 +75,7 @@ class Login extends Component {
 				<TextInput
 					style={styles.usernameInput}
 					placeholder="Username"
+					autoComplete={false}
 					onChangeText={(text) => this.setState({username: text})}
 					value={this.state.username}
 				/>
