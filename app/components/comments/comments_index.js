@@ -14,6 +14,16 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start'
   },
+  comContainer: {
+    // padding: 12,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+    margin: 3,
+    backgroundColor: "white",
+    borderWidth: 1,
+		borderColor: 'gray'
+  },
   text: {
     marginLeft: 12,
     fontSize: 16,
@@ -40,10 +50,17 @@ class CommentsIndex extends React.Component {
 
 
   render () {
-    console.log(this.state);
+
     return (
       <View style={styles.listViewContainer}>
-        <ScrollView>{this.props.comments.map( (comment) => <Text>{comment.comment}</Text>)}</ScrollView>
+        <ScrollView>{this.props.comments.map( (comment) => {
+            return (
+              <View style={styles.comContainer}>
+                <Text style={styles.text}>{comment.comment}</Text>
+                <Text style={styles.text}>{comment.username}</Text>
+              </View>
+            );
+          })}</ScrollView>
 
       </View>
     );

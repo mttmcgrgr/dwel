@@ -41,7 +41,9 @@ class TodosIndexItem extends React.Component {
       component: TodoDetail,
       title: 'Todo',
       passProps: {
-        todo: this.props.todo
+        todo: this.props.todo,
+        currentUser: this.props.currentUser
+
       }
     });
   }

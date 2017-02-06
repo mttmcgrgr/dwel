@@ -194,6 +194,7 @@ class GroupHome extends React.Component {
           <View style={styles.listViewContainer}>
             <ScrollView>{this.state.todos.map( (data) => (
               <TodosIndexItem
+              currentUser={this.props.currentUser}
               navigator={this.props.navigator}
               todo={data}/>))}</ScrollView>
           </View>

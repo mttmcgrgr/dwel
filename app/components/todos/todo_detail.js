@@ -31,17 +31,6 @@ const styles = StyleSheet.create({
     flex: 0.95,
 
   },
-  buttonText: {
-		height: 30,
-		// borderColor: 'gray',
-		paddingTop: 8,
-		paddingBottom: 5,
-		fontSize: 12,
-		// borderWidth: 1,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		left: -10
-	},
   commentContainer: {
     flex: .05,
     width: 260,
@@ -52,15 +41,30 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
 
   },
+  buttonText: {
+    // height: 30,
+    // borderColor: 'gray',
+    // paddingTop: 8,
+    // paddingBottom: 5,
+    fontSize: 8,
+    // borderWidth: 1,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    marginTop: 7,
+    alignItems: 'center'
+    // left: -10
+  },
   button: {
-    flex: .2,
+    flex: .12,
 		borderColor: 'gray',
 	  justifyContent: 'space-between',
-		backgroundColor: 'white',
-		alignItems: 'center'
+		backgroundColor: 'gray',
+		alignItems: 'center',
+    marginLeft: 3
 	},
   commentInput:{
-		  flex: .8,
+		  flex: .88,
 			borderColor: 'gray',
 			fontSize: 12,
 			borderWidth: 1,
@@ -99,12 +103,14 @@ class TodoDetail extends React.Component {
         },
         body: JSON.stringify({ comments: {
           comment: this.state.comment,
-          todo_id: 1,
-          username: "example"
+          todo_id: this.props.todo.id,
+          username: this.props.currentUser.username
         }})
       })
       .then((response) => response.json())
      .then(response => {
+       console.log(this.state);
+       console.log(this.props);
        if (response.comment){
          let comments = this.state.comments;
          comments.push(response);
@@ -113,7 +119,6 @@ class TodoDetail extends React.Component {
          comments
         });
 
-        console.log(this.state);
        } else {
          this.setState({
            errors: response.responseData
@@ -140,7 +145,6 @@ class TodoDetail extends React.Component {
         </View>
         <View style={styles.commentIndex}>
           <CommentIndex navigator={this.props.navigator} comments={this.state.comments}/>
-
         </View>
         <View style={styles.commentContainer}>
           <TextInput

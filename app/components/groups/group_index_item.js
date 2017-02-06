@@ -41,7 +41,9 @@ class GroupIndexItem extends React.Component {
       component: GroupHome,
       title: 'Group',
       passProps: {
-        group: this.props.group
+        group: this.props.group,
+        currentUser: this.props.currentUser
+
       }
     });
   }
