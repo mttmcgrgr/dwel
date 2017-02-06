@@ -14,7 +14,7 @@ Dwel is an IOS app proving an intuitive communications platform between landlord
 On entering the app, a user signs up by inputing their credentials and submits the form by answering a question "Are you a landlord?" a "Yes" will give the user the ability to
 create mark to-dos as done. The second stage is to join a pre-existing group with a user provided key code or to create a new group. If the group is new, a user simply inputs an address, which becomes the title of the group and a key code is implicitly passed to the group through use of a key code generator.
 
-![image of login](docs/images/create_account.png =300x520)
+<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/create_account.png" width="200">
 ![image of group creation](docs/images/create_group.png)
 
 ###Groups
