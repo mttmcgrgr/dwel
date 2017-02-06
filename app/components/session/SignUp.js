@@ -5,13 +5,10 @@ import { View, Text, StyleSheet,
 				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
 import Login from './Login';
-<<<<<<< HEAD
+
 import GroupIndex from '../groups/group_index';
 import { createAccount } from '../../actions/session_actions';
 import * as APIUtil from '../../util/session_api_util';
-=======
-
->>>>>>> 5fe5b2c14e96b2aef196ad06ffb552f4134376d2
 
 
 class SignUp extends Component {
