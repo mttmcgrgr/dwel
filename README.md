@@ -14,15 +14,15 @@ Dwel is an IOS app proving an intuitive communications platform between landlord
 On entering the app, a user signs up by inputing their credentials and submits the form by answering a question "Are you a landlord?" a "Yes" will give the user the ability to
 create mark to-dos as done. The second stage is to join a pre-existing group with a user provided key code or to create a new group. If the group is new, a user simply inputs an address, which becomes the title of the group and a key code is implicitly passed to the group through use of a key code generator.
 
-<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/create_account.png" width="200">
+<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/create_account.png" width="300">
 
-<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/create_group.png" width="200">
+<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/create_group.png" width="300">
 
 ###Groups
 
 On the back-end, groups are stored with the tenant address and a group key that can be shared with others that want to be added to the group.  Groups are created by the first group member to register for Dwel and a key is provided.  Once the key is submitted by the next registered member of the group, both members are given access to the group dashboard.  Users can browse all their group subscriptions in a group index following login.  Group member affiliation is stored in a Memberships table in the database.  
 
-<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/groups_index.png" width="200">
+<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/groups_index.png" width="300">
 
 When users first create a group, a post request is made to the database with an user input address and a computer generated key-code.  
 
@@ -61,7 +61,7 @@ createNewGroup(){
 
 ####Todos
 
-<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/todos_form.png" width="200">
+<img src="https://github.com/mttmcgrgr/dwel/blob/master/docs/images/todos_form.png" width="300">
 
 Todos are created by tenants in need of services from their landlord such as maintenance, extermination, etc.  Front-end validation restricts landlord from creating todos and tenants from marking todos as resolved.  Todos are stored in the database with columns for description, body, group_id, and a boolean for whether or not the todo is resolved.  a group's todos are indexed and created on the group dashboard
 
