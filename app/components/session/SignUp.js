@@ -18,7 +18,6 @@ class SignUp extends Component {
 		currentUser: {}
 		};
 		this._goToLogin = this._goToLogin.bind(this);
-		this._goToGroupIndex = this._goToGroupIndex.bind(this);
 		this._goToKeycode = this._goToKeycode.bind(this);
 		this.createLandlord = this.createLandlord.bind(this);
 		this.createTenant = this.createTenant.bind(this);
