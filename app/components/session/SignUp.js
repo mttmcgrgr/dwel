@@ -6,12 +6,7 @@ import { View, Text, StyleSheet,
 import Keycode from './Keycode';
 import Login from './Login';
 
-<<<<<<< HEAD
-import GroupIndex from '../groups/group_index';
-import { createAccount } from '../../actions/session_actions';
-import * as APIUtil from '../../util/session_api_util';
-=======
->>>>>>> 96b23efa52a227a5c7f2c99cc743acfdb2e39025
+
 
 
 class SignUp extends Component {
