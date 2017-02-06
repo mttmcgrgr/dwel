@@ -6,9 +6,12 @@ import { View, Text, StyleSheet,
 import Keycode from './Keycode';
 import Login from './Login';
 
+<<<<<<< HEAD
 import GroupIndex from '../groups/group_index';
 import { createAccount } from '../../actions/session_actions';
 import * as APIUtil from '../../util/session_api_util';
+=======
+>>>>>>> 96b23efa52a227a5c7f2c99cc743acfdb2e39025
 
 
 class SignUp extends Component {
@@ -21,7 +24,6 @@ class SignUp extends Component {
 		currentUser: {}
 		};
 		this._goToLogin = this._goToLogin.bind(this);
-		this._goToGroupIndex = this._goToGroupIndex.bind(this);
 		this._goToKeycode = this._goToKeycode.bind(this);
 		this.createLandlord = this.createLandlord.bind(this);
 		this.createTenant = this.createTenant.bind(this);
@@ -40,30 +42,13 @@ class SignUp extends Component {
   	});
    }
 
-	 _goToGroupIndex() {
-	 this.props.navigator.push({
-	 component: GroupIndex,
-	 title: 'Group Index',
-	 passProps: {
-		 username: this.state.username,
-		 password: this.state.password,
-		 keycode: this.state.keycode,
-		 currentUser: this.state.currentUser,
-		 groups: [{id: 1, address: "650 S. Spring St. Apt. 1006", otherUser: "Barry Shy",
-		 todos: [{description: "Fix sink", body: "the sink has been leaking for days", category: "plumbing", resolved: false, comments: [{id: 1, comment: "this is the first comment", username: "Victor"}, {id: 2, comment: "this is the second comment", username: "Matt"}]},
-		 {description: "Ants", body: "There are ants coming out of the wall behind the couch", category: "pests", resolved: false, comments: [{id: 1, comment: "this is the first comment", username: "Me"}, {id: 2, username: "You", comment: "this is the second comment"}]}]},
-		 {id: 2, address: "1228 Evelyn Ave.", otherUser: "Sally Rice",
-			 todos: [{description: "Air conditioner broken", body: "The air conditioner isn't working", category: "utilities", resolved: false},
-			 {description: "Washing machine is leaking", body: "It't getting EVERYWHERE", category: "plumbing", resolved: false}]}]
-	 }
-	 });
-	}
+
 
 	 _goToKeycode() {
 		if(this.state.currentUser.username){
 		this.props.navigator.push({
 			component: Keycode,
-			title: 'Key Code',
+			title: 'Add a Group',
 			passProps: {
 			 currentUser: this.state.currentUser
 			 }
@@ -147,7 +132,7 @@ class SignUp extends Component {
 	        }
 	      });
 
-				this._goToKeycode();
+				setTimeout(this._goToKeycode, 500);
 	     }
 
 
@@ -197,7 +182,7 @@ class SignUp extends Component {
 	          </Text>
         </TouchableOpacity>
 				<Text style={styles.title}>
-					Already Have an Account?
+					Have an Account?
 				</Text>
 				<TouchableOpacity
 						style={styles.login}
@@ -209,13 +194,6 @@ class SignUp extends Component {
 				<Text style={styles.errors}>
 					{this.state.errors}
 				</Text>
-				<TouchableOpacity
-						style={styles.button}
-						onPress={this._goToGroupIndex}>
-		          <Text style={styles.buttonText}>
-		            Group Index
-		          </Text>
-	        </TouchableOpacity>
 		</View>
 	);
 	}
@@ -225,50 +203,52 @@ class SignUp extends Component {
 const styles = StyleSheet.create({
 
 	usernameInput:{
-		  height: 30,
+		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
 			fontSize: 12,
 			borderWidth: 1,
-			width: 200,
+			width: 280,
 			marginBottom: 10,
 			backgroundColor: "white",
-			left: 70
+			left: 40
 
 	},
 
 	passwordInput: {
 
-		  height: 30,
+		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
 			fontSize: 12,
 			borderWidth: 1,
-			width: 200,
+			width: 280,
+
 			marginBottom: 20,
 			backgroundColor: "white",
-			left: 70
+			left: 40
  	},
 
 	inputForm: {
 		flex: 1,
 		alignItems: "stretch",
 		justifyContent: "center",
+		flexDirection: 'column',
 		padding: 10,
 		backgroundColor: '#259ebc',
 
 	},
 
 	button: {
-		height: 30,
-		width: 200,
+		height: 50,
+		width: 280,
 		borderWidth: 1,
 		borderColor: 'gray',
 		flexDirection: 'row',
 	  justifyContent: "center",
 		backgroundColor: '#efbc45',
 		alignItems: 'center',
-		left: 70,
+		left: 40,
 		marginTop: 5
 	},
 
@@ -286,21 +266,20 @@ const styles = StyleSheet.create({
 
 	logo: {
 		justifyContent:'center',
-		width: 50,
-		height: 50,
-		left: 142,
-		marginBottom: 20
+		width: 60,
+		height: 60,
+		left: 142
 	},
 
 	buttonText: {
 		flex: 1,
-		height: 25,
+		height: 40,
 		paddingTop: 8,
 		paddingBottom: 10,
-		fontSize: 12,
 		width: 190,
 		fontWeight: 'bold',
 		textAlign: 'center',
+		fontSize: 20,
 		justifyContent: "center"
 	},
 
@@ -310,20 +289,23 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
-		left: 70,
+		left: 75,
 		padding: 10,
-		textAlign: 'center'
+		fontSize: 20,
+		textAlign: 'center',
+		marginBottom: 10
 	},
 	errors: {
 		height: 30,
-		width: 200,
+		width: 300,
 		color: "red",
 		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
-		left: 70,
+		left: 30,
 		padding: 10,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontSize: 20
 	}
 
 });
