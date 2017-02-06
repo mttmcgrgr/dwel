@@ -16,6 +16,7 @@ class Login extends Component {
 			currentUser: ""
 		};
 		this.Login = this.Login.bind(this);
+		this._goToGroupIndex = this._goToGroupIndex.bind(this);
 
 	}
 
@@ -35,30 +36,28 @@ class Login extends Component {
 		 .then(response => {
 			 if (response.username){
 				 this.setState({
-				 currentUser: response.username
+				 currentUser: response
 				});
 			 } else {
 				 this.setState({
-					 errors: response.responseData
+					 errors: response[0]
 				 });
 			 }
 		 });
-		 console.log(this.state);
-
+		 setTimeout(this._goToGroupIndex, 500);
 		}
 
-	 _goToGroupIndex() {
-	 this.props.navigator.push({
-	 component: GroupIndex,
-	 title: 'Your Groups',
-	 passProps: {
-		 username: this.state.username,
-		 password: this.state.password,
-		 keycode: this.state.keycode,
-		 currentUser: this.state.currentUser
-	 }
- });
- }
+		_goToGroupIndex() {
+		 if(this.state.currentUser.username){
+     this.props.navigator.push({
+     component: GroupIndex,
+     title: 'Groups',
+     passProps: {
+ 			currentUser: this.state.currentUser
+ 	  	 }
+   	 });
+     }
+	  }
 
 
 	render() {
@@ -85,13 +84,12 @@ class Login extends Component {
 				/>
 			<TouchableOpacity
 					onPress={this.Login}
-					onPress={this._goToGroupIndex}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
 	            Log In
 	          </Text>
         </TouchableOpacity>
-				<Text style={styles.title}>
+				<Text style={styles.errors}>
 					{this.state.errors}
 				</Text>
 		</View>
@@ -143,7 +141,7 @@ const styles = StyleSheet.create({
 		borderColor: 'gray',
 		flexDirection: 'row',
 	  justifyContent: 'space-between',
-		backgroundColor: 'white',
+		backgroundColor: '#efbc45',
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
@@ -166,7 +164,7 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		borderWidth: 1,
 		width: 200,
-		backgroundColor: "white",
+		backgroundColor: "#efbc45",
 		fontWeight: 'bold',
 		textAlign: 'center',
 		left: -10
@@ -181,7 +179,18 @@ const styles = StyleSheet.create({
 		left: 70,
 		padding: 20,
 		textAlign: 'center'
+	},
 
+	errors: {
+		height: 30,
+		width: 200,
+		color: "red",
+		flexDirection: 'row',
+	  justifyContent: 'center',
+		alignItems: 'center',
+		left: 70,
+		padding: 10,
+		textAlign: 'center'
 	}
 
 });
