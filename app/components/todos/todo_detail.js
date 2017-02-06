@@ -72,24 +72,34 @@ class TodoDetail extends React.Component {
 
   constructor (props) {
     super(props);
-    this.comments = this.props.todo.comments;
-
+    // console.log(props);
+    this.post = this.post.bind(this);
     this.state = {
-      comment: ""
+      comment: "",
+      comments: []
     }
   }
 
+  componentDidMount() {
+    // console.log(this.state);
+    this.setState({
+
+      comments: this.props.todo.comments
+    })
+  }
+
   post() {
-    debugger;
+    // console.log(this.props);
+    // console.log(this.state);
     fetch('http://localhost:3000/api/comments', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify( {comment:{
+        body: JSON.stringify({ comments: {
           comment: this.state.comment,
-          todo_id: this.props.todo.id,
+          todo_id: 1,
           username: "example"
         }})
       })
@@ -97,10 +107,13 @@ class TodoDetail extends React.Component {
      .then(response => {
 
        if (response.comment){
+         let comments = this.state.comments;
+         comments.push(response.comment);
          this.setState({
-         comment: ""
+         comment: "",
+         comments
         });
-        this.comments.push({id: 1, comment: "test comment", username: "Victor"})
+
        } else {
          this.setState({
            errors: response.responseData
@@ -113,6 +126,8 @@ class TodoDetail extends React.Component {
 
 
   render () {
+    // console.log(this.state.comments);
+    // console.log(this.props.todo.comments);
     return (
       <View style={styles.todoDetailPage}>
         <View style={styles.todoDetailContainer}>
@@ -124,7 +139,7 @@ class TodoDetail extends React.Component {
           </Text>
         </View>
         <View style={styles.commentIndex}>
-          <CommentIndex navigator={this.props.navigator} comments={this.props.todo.comments}/>
+          <CommentIndex navigator={this.props.navigator} comments={this.state.comments}/>
         </View>
         <View style={styles.commentContainer}>
           <TextInput

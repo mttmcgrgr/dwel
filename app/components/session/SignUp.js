@@ -8,6 +8,7 @@ import Login from './Login';
 
 
 
+
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
