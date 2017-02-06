@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, ListView, ScrollView, StyleSheet} from 'react-native';
-import CommentIndexItem from './comments_index_item.js';
+import CommentIndexItem from './comments_index_item';
 
 const styles = StyleSheet.create({
   listViewContainer: {
