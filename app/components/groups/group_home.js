@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, Picker, TextInput, ListView, StyleSheet} from 'react-native';
 import TodosIndex from '../todos/todos_index';
+import TodosIndexItem from '../todos/todos_index_item.js';
 // import TodoForm from '../todos/todos_form';
 
 const styles = StyleSheet.create({
@@ -40,6 +41,24 @@ const styles = StyleSheet.create({
     width: 100,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  listViewContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  listContainer: {
+    padding: 12,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+  descriptionInput: {
+    height: 20,
+    width: 300
+  },
+  bodyInput: {
+    height: 20,
+    width: 300
   }
 });
 
@@ -47,19 +66,19 @@ const styles = StyleSheet.create({
 class GroupHome extends React.Component {
   constructor(props) {
     super(props);
-    // this.groupMember = this.groupMember.bind(this);
     // this._onForward = this._onForward.bind(this);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const todos = this.props.todos;
+    this.state = {
+      // dataSource: ds.cloneWithRows(this.props.todos),
+      description: "",
+      category: "",
+      body: ""
+    }
   }
 
 
-  // groupMember () {
-  //   if (current_user.id === this.props.group.user1_id) {
-  //     return this.props.group.user2.username;
-  //   } else {
-  //     return this.props.group.user1.username;
-  //   }
-  // }
-//
+
 //   _onForward() {
 //     this.props.navigator.push({
 //       component: TodoForm,
@@ -87,7 +106,27 @@ class GroupHome extends React.Component {
               source={require('../../../images/plus.png')}/>
           </View>
         </View>
-        <TodosIndex navigator={this.props.navigator} todos={this.props.group.todos}/>
+        <View>
+          <Picker
+            selectedValue={this.state.category}
+            onValueChange={(type) => this.setState({category: type})}>
+            <Picker.Item label="Lights" value="lights" />
+            <Picker.Item label="Plumbing" value="plumbing" />
+            <Picker.Item label="Doors" value="doors" />
+            <Picker.Item label="Windows" value="windows" />
+          </Picker>
+          <TextInput
+            onChangeText={(text) => this.setState({description: text})}
+            value={this.state.description}
+            style={styles.descriptionInput}
+          />
+          <TextInput
+            onChangeText={(text) => this.setState({body: text})}
+            value={this.state.body}
+            style={styles.bodyInput}
+          />
+        </View>
+
       </View>
     );
   }
