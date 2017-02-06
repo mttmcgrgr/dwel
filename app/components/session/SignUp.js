@@ -5,13 +5,7 @@ import { View, Text, StyleSheet,
 				 Button, Image, AsyncStorage, Actions } from 'react-native';
 import Keycode from './Keycode';
 import Login from './Login';
-<<<<<<< HEAD
-import GroupIndex from '../groups/group_index';
-import { createAccount } from '../../actions/session_actions';
-import * as APIUtil from '../../util/session_api_util';
-=======
 
->>>>>>> 5fe5b2c14e96b2aef196ad06ffb552f4134376d2
 
 
 class SignUp extends Component {
@@ -43,24 +37,7 @@ class SignUp extends Component {
   	});
    }
 
-	 _goToGroupIndex() {
-	 this.props.navigator.push({
-	 component: GroupIndex,
-	 title: 'Group Index',
-	 passProps: {
-		 username: this.state.username,
-		 password: this.state.password,
-		 keycode: this.state.keycode,
-		 currentUser: this.state.currentUser,
-		 groups: [{id: 1, address: "650 S. Spring St. Apt. 1006", otherUser: "Barry Shy",
-		 todos: [{description: "Fix sink", body: "the sink has been leaking for days", category: "plumbing", resolved: false, comments: [{id: 1, comment: "this is the first comment", username: "Victor"}, {id: 2, comment: "this is the second comment", username: "Matt"}]},
-		 {description: "Ants", body: "There are ants coming out of the wall behind the couch", category: "pests", resolved: false, comments: [{id: 1, comment: "this is the first comment", username: "Me"}, {id: 2, username: "You", comment: "this is the second comment"}]}]},
-		 {id: 2, address: "1228 Evelyn Ave.", otherUser: "Sally Rice",
-			 todos: [{description: "Air conditioner broken", body: "The air conditioner isn't working", category: "utilities", resolved: false},
-			 {description: "Washing machine is leaking", body: "It't getting EVERYWHERE", category: "plumbing", resolved: false}]}]
-	 }
-	 });
-	}
+
 
 	 _goToKeycode() {
 		if(this.state.currentUser.username){
@@ -150,7 +127,7 @@ class SignUp extends Component {
 	        }
 	      });
 
-				this._goToKeycode();
+				setTimeout(this._goToKeycode, 500);
 	     }
 
 
