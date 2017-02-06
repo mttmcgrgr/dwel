@@ -143,7 +143,8 @@ class GroupHome extends React.Component {
        console.log(response);
        if (response.length > 0){
          this.setState({
-         todos: response
+         todos: response,
+         visibleForm: false
         });
        } else {
          this.setState({

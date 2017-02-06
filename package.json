@@ -12,6 +12,7 @@
     "react-native-checkbox": "^1.1.0",
     "react-native-checkbox-field": "^1.1.2",
     "react-native-form": "^2.1.2",
+    "react-native-switch": "^1.0.5",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
