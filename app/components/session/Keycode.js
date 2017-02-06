@@ -75,7 +75,7 @@ class Keycode extends Component {
   				 });
   			 }
   		 });
-  		 setTimeout(this._goToGroupIndex, 500);
+  		 setTimeout(this._goToGroupIndex, 100);
   		}
 
 
@@ -85,14 +85,8 @@ class Keycode extends Component {
         title: 'Your Groups',
         passProps: {
     			groups: this.state.groups,
-    			currentUser: this.props.currentUser,
-    			testGroups: [{id: 1, address: "650 S. Spring St. Apt. 1006", otherUser: "Barry Shy",
-    			todos: [{description: "Fix sink", body: "the sink has been leaking for days", category: "plumbing", resolved: false},
-    			{description: "Ants", body: "There are ants coming out of the wall behind the couch", category: "pests", resolved: false}]},
-    			{id: 2, address: "1228 Evelyn Ave.", otherUser: "Sally Rice",
-    				todos: [{description: "Air conditioner broken", body: "The air conditioner isn't working", category: "utilities", resolved: false},
-    				{description: "Washing machine is leaking", body: "It't getting EVERYWHERE", category: "plumbing", resolved: false}]}]
-      	}
+    			currentUser: this.props.currentUser
+        }
       });
     }
 
@@ -127,6 +121,8 @@ class Keycode extends Component {
 				/>
 				<TouchableOpacity
           onPress={this.joinGroup}
+          autoCapitalize={false}
+          autoComplete={false}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
 	            Join Group
