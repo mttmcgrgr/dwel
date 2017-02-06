@@ -35,13 +35,14 @@ class GroupIndex extends React.Component {
 
 
   render () {
-    console.log(this.props.currentUser);
     return (
       <View style={styles.indexPage}>
         <ListView
           contentContainerStyle={styles.container}
           dataSource={this.state.dataSource}
+
           renderRow={(data) => <GroupIndexItem currentUser={this.props.currentUser} navigator={this.props.navigator} group={data}/>}/>
+
       </View>
     );
   }

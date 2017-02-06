@@ -147,6 +147,7 @@ class SignUp extends Component {
 				</Text>
 				<TextInput
 					style={styles.usernameInput}
+					autoComplete={false}
 					placeholder="Username"
 					onChangeText={(text) => this.setState({username: text})}
 					value={this.state.username}
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
 		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
-			fontSize: 12,
+			fontSize: 20,
 			borderWidth: 1,
 			width: 280,
 			marginBottom: 10,
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
 		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
-			fontSize: 12,
+			fontSize: 20,
 			borderWidth: 1,
 			width: 280,
 
