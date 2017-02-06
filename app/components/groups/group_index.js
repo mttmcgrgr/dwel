@@ -40,7 +40,9 @@ class GroupIndex extends React.Component {
         <ListView
           contentContainerStyle={styles.container}
           dataSource={this.state.dataSource}
-          renderRow={(group) => <GroupIndexItem navigator={this.props.navigator} group={group}/>}/>
+
+          renderRow={(data) => <GroupIndexItem currentUser={this.props.currentUser} navigator={this.props.navigator} group={data}/>}/>
+
       </View>
     );
   }
