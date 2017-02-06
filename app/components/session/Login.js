@@ -86,7 +86,7 @@ class Login extends Component {
 					onPress={this.Login}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
-	            Log In
+	            Login
 	          </Text>
         </TouchableOpacity>
 				<Text style={styles.errors}>
@@ -101,97 +101,109 @@ class Login extends Component {
 const styles = StyleSheet.create({
 
 	usernameInput:{
-		  height: 30,
+		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
 			fontSize: 12,
 			borderWidth: 1,
-			width: 200,
+			width: 280,
 			marginBottom: 10,
+			marginTop: 10,
 			backgroundColor: "white",
-			left: 70
+			left: 40
 
 	},
 
 	passwordInput: {
 
-		  height: 30,
+		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
-			fontSize: 12,
 			borderWidth: 1,
-			width: 200,
+			width: 280,
+			fontSize: 20,
 			marginBottom: 20,
 			backgroundColor: "white",
-			left: 70
+			left: 40
  	},
 
 	inputForm: {
 		flex: 1,
 		alignItems: "stretch",
 		justifyContent: "center",
+		flexDirection: 'column',
 		padding: 10,
 		backgroundColor: '#259ebc',
 
 	},
 
 	button: {
-		height: 30,
-		width: 200,
+		height: 50,
+		width: 280,
+		borderWidth: 1,
 		borderColor: 'gray',
 		flexDirection: 'row',
-	  justifyContent: 'space-between',
+	  justifyContent: "center",
 		backgroundColor: '#efbc45',
+		alignItems: 'center',
+		left: 40,
+		marginTop: 5
+	},
+
+	login: {
+		height: 30,
+		width: 200,
+		flexDirection: 'row',
+	  justifyContent: 'space-between',
 		alignItems: 'center',
 		left: 70,
 		padding: 10,
-    marginTop: 10
 	},
 
 	logo: {
 		justifyContent:'center',
-		width: 50,
-		height: 50,
-		left: 142,
-		marginBottom: 20
+		width: 60,
+		height: 60,
+		left: 142
 	},
 
 	buttonText: {
-		height: 30,
-		borderColor: 'gray',
-		paddingTop: 10,
-		paddingBottom: 5,
-		fontSize: 12,
-		borderWidth: 1,
-		width: 200,
-		backgroundColor: "#efbc45",
+		flex: 1,
+		height: 40,
+		paddingTop: 8,
+		paddingBottom: 10,
+		width: 190,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		left: -10
+		fontSize: 20,
+		justifyContent: "center"
 	},
 
 	title: {
 		height: 30,
 		width: 200,
 		flexDirection: 'row',
-	  justifyContent: 'space-between',
+	  justifyContent: 'center',
 		alignItems: 'center',
-		left: 70,
-		padding: 20,
-		textAlign: 'center'
+		left: 75,
+		padding: 10,
+		fontSize: 20,
+		textAlign: 'center',
+		marginBottom: 10
 	},
-
 	errors: {
 		height: 30,
-		width: 200,
+		width: 300,
 		color: "red",
 		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
-		left: 70,
+		left: 30,
 		padding: 10,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontSize: 20
 	}
+
 
 });
 

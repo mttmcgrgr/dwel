@@ -176,7 +176,7 @@ class SignUp extends Component {
 	          </Text>
         </TouchableOpacity>
 				<Text style={styles.title}>
-					Already Have an Account?
+					Have an Account?
 				</Text>
 				<TouchableOpacity
 						style={styles.login}
@@ -188,13 +188,6 @@ class SignUp extends Component {
 				<Text style={styles.errors}>
 					{this.state.errors}
 				</Text>
-				<TouchableOpacity
-						style={styles.button}
-						onPress={this._goToGroupIndex}>
-		          <Text style={styles.buttonText}>
-		            Group Index
-		          </Text>
-	        </TouchableOpacity>
 		</View>
 	);
 	}
@@ -204,50 +197,52 @@ class SignUp extends Component {
 const styles = StyleSheet.create({
 
 	usernameInput:{
-		  height: 30,
+		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
 			fontSize: 12,
 			borderWidth: 1,
-			width: 200,
+			width: 280,
 			marginBottom: 10,
 			backgroundColor: "white",
-			left: 70
+			left: 40
 
 	},
 
 	passwordInput: {
 
-		  height: 30,
+		  height: 50,
 			borderColor: 'gray',
 			padding: 10,
 			fontSize: 12,
 			borderWidth: 1,
-			width: 200,
+			width: 280,
+
 			marginBottom: 20,
 			backgroundColor: "white",
-			left: 70
+			left: 40
  	},
 
 	inputForm: {
 		flex: 1,
 		alignItems: "stretch",
 		justifyContent: "center",
+		flexDirection: 'column',
 		padding: 10,
 		backgroundColor: '#259ebc',
 
 	},
 
 	button: {
-		height: 30,
-		width: 200,
+		height: 50,
+		width: 280,
 		borderWidth: 1,
 		borderColor: 'gray',
 		flexDirection: 'row',
 	  justifyContent: "center",
 		backgroundColor: '#efbc45',
 		alignItems: 'center',
-		left: 70,
+		left: 40,
 		marginTop: 5
 	},
 
@@ -265,21 +260,20 @@ const styles = StyleSheet.create({
 
 	logo: {
 		justifyContent:'center',
-		width: 50,
-		height: 50,
-		left: 142,
-		marginBottom: 20
+		width: 60,
+		height: 60,
+		left: 142
 	},
 
 	buttonText: {
 		flex: 1,
-		height: 25,
+		height: 40,
 		paddingTop: 8,
 		paddingBottom: 10,
-		fontSize: 12,
 		width: 190,
 		fontWeight: 'bold',
 		textAlign: 'center',
+		fontSize: 20,
 		justifyContent: "center"
 	},
 
@@ -289,20 +283,23 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
-		left: 70,
+		left: 75,
 		padding: 10,
-		textAlign: 'center'
+		fontSize: 20,
+		textAlign: 'center',
+		marginBottom: 10
 	},
 	errors: {
 		height: 30,
-		width: 200,
+		width: 300,
 		color: "red",
 		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
-		left: 70,
+		left: 30,
 		padding: 10,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontSize: 20
 	}
 
 });
