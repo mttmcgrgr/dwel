@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
-// import CommentIndex from '../comments/comments_index';
+import CommentIndex from '../comments/comments_index';
 
 const styles = StyleSheet.create({
   todoDetailPage: {
@@ -105,20 +105,20 @@ class TodoDetail extends React.Component {
       })
       .then((response) => response.json())
      .then(response => {
-console.log(response);
-      //  if (response.comment){
-      //    let comments = this.state.comments;
-      //    comments.push(response.comment);
-      //    this.setState({
-      //    comment: "",
-      //    comments
-      //   });
-       //
-      //  } else {
-      //    this.setState({
-      //      errors: response.responseData
-      //    });
-      //  }
+       if (response.comment){
+         let comments = this.state.comments;
+         comments.push(response);
+         this.setState({
+         comment: "",
+         comments
+        });
+
+        console.log(this.state);
+       } else {
+         this.setState({
+           errors: response.responseData
+         });
+       }
      });
     //  console.log(this.state);
 
@@ -139,6 +139,7 @@ console.log(response);
           </Text>
         </View>
         <View style={styles.commentIndex}>
+          <CommentIndex navigator={this.props.navigator} comments={this.state.comments}/>
 
         </View>
         <View style={styles.commentContainer}>
@@ -159,5 +160,4 @@ console.log(response);
     );
   }
 }
-// <CommentIndex navigator={this.props.navigator} comments={this.state.comments}/>
 export default TodoDetail;
