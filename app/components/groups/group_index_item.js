@@ -32,6 +32,7 @@ class GroupIndexItem extends React.Component {
 
   constructor (props) {
     super(props);
+    console.log(this.props);
     this._onForward = this._onForward.bind(this);
   }
 

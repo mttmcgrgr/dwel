@@ -35,6 +35,7 @@ class GroupIndex extends React.Component {
 
 
   render () {
+    console.log(this.props.currentUser);
     return (
       <View style={styles.indexPage}>
         <ListView

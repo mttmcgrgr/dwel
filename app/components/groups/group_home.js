@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, Picker, TextInput, ListView, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, Image, Picker, TextInput, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import TodosIndex from '../todos/todos_index';
 import TodosIndexItem from '../todos/todos_index_item.js';
 // import TodoForm from '../todos/todos_form';
@@ -80,29 +80,77 @@ const styles = StyleSheet.create({
     width: 300,
     flexDirection: 'column',
     justifyContent: 'flex-start'
-  }
+  },
+  buttonText: {
+    flex: 1,
+    height: 40,
+    paddingTop: 8,
+    paddingBottom: 10,
+    width: 190,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 20,
+    justifyContent: "center"
+  },
+  button: {
+    height: 50,
+    width: 280,
+    borderWidth: 1,
+    borderColor: 'gray',
+    flexDirection: 'row',
+    justifyContent: "center",
+    backgroundColor: '#efbc45',
+    alignItems: 'center',
+    left: 40,
+    marginTop: 5
+  },
+
 });
 
 
 class GroupHome extends React.Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     ;
     this.changeFormVisibility = this.changeFormVisibility.bind(this);
     this.formVisibility = this.formVisibility.bind(this);
+    this.createNewTodo = this.createNewTodo.bind(this);
     this.state = {
-      dataSource: ds.cloneWithRows(this.todos()),
       description: "",
       category: "",
       body: "",
       visibleForm: false,
-      todos: []
+      todos: this.props.group.todos,
+      errors: ""
     }
   }
-
-    todos () {
-      this.state.todos.length > 0 ? this.state.todos : this.props.group.todos
+  createNewTodo(){
+    fetch('http://localhost:3000/api/todos', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({todo:{
+          description: this.state.description,
+          category: this.state.category,
+          body: this.state.body,
+          group_id: this.props.group.id
+        }})
+      })
+      .then((response) => response.json())
+     .then(response => {
+       console.log(response);
+       if (response.length > 0){
+         this.setState({
+         todos: response
+        });
+       } else {
+         this.setState({
+           errors: response[0]
+         });
+       }
+     });
     }
 
     formVisibility () {
@@ -130,16 +178,23 @@ class GroupHome extends React.Component {
               <Picker.Item label="Doors" value="doors" />
               <Picker.Item label="Windows" value="windows" />
             </Picker>
+            <TouchableOpacity
+                onPress={this.createNewTodo}
+                style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    Create Todo
+                  </Text>
+               </TouchableOpacity>
           </View>
         )
       } else {
+        console.log(this.state.todos);
         return (
           <View style={styles.listViewContainer}>
-            <ListView
-              contentContainerStyle={styles.container}
-              dataSource={this.state.dataSource}
-              renderRow={(data) => <TodosIndexItem
-                navigator={this.props.navigator} todo={data}/>}/>
+            <ScrollView>{this.state.todos.map( (data) => (
+              <TodosIndexItem
+              navigator={this.props.navigator}
+              todo={data}/>))}</ScrollView>
           </View>
         )
       }

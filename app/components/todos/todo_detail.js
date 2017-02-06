@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
-import CommentIndex from '../comments/comments_index.js';
+// import CommentIndex from '../comments/comments_index';
 
 const styles = StyleSheet.create({
   todoDetailPage: {
@@ -139,7 +139,7 @@ class TodoDetail extends React.Component {
           </Text>
         </View>
         <View style={styles.commentIndex}>
-          <CommentIndex navigator={this.props.navigator} comments={this.state.comments}/>
+
         </View>
         <View style={styles.commentContainer}>
           <TextInput
@@ -159,5 +159,5 @@ class TodoDetail extends React.Component {
     );
   }
 }
-
+// <CommentIndex navigator={this.props.navigator} comments={this.state.comments}/>
 export default TodoDetail;
