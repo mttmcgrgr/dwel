@@ -34,7 +34,8 @@ class Login extends Component {
 			})
 			.then((response) => response.json())
 		 .then(response => {
-			 if (response.username){
+			 console.log(response);
+			 if(response.username){
 				 this.setState({
 				 currentUser: response
 				});
@@ -61,6 +62,7 @@ class Login extends Component {
 
 
 	render() {
+
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
