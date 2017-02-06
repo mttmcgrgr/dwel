@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+// import {switch} from 'react-native-switch'
 import TodoDetail from './todo_detail';
 
 const styles = StyleSheet.create({
@@ -30,6 +31,9 @@ class TodosIndexItem extends React.Component {
   constructor (props) {
     super(props);
     this._onForward = this._onForward.bind(this);
+    this.state = {
+      resolved: this.props.todo.resolved
+    }
   }
 
   _onForward() {
@@ -42,6 +46,32 @@ class TodosIndexItem extends React.Component {
     });
   }
   //
+  createNewTodo(){
+    fetch('http://localhost:3000/api/todos', {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({todo:{
+          resolved: this.state.description,
+        }})
+      })
+      .then((response) => response.json())
+     .then(response => {
+       console.log(response);
+       if (response.length > 0){
+         this.setState({
+         todos: response,
+         visibleForm: false
+        });
+       } else {
+         this.setState({
+           errors: response[0]
+         });
+       }
+     });
+    }
 
   render () {
     return (
@@ -51,9 +81,6 @@ class TodosIndexItem extends React.Component {
           style={styles.todoItem}>
           <Text style={styles.text}>
             {this.props.todo.description}
-          </Text>
-          <Text style={styles.text}>
-            resolved: {this.props.todo.resolved}
           </Text>
         </TouchableOpacity>
       </View>
