@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, StyleSheet, Switch} from 'react-native';
 import CommentIndex from '../comments/comments_index';
 
 const styles = StyleSheet.create({
@@ -80,8 +80,9 @@ class TodoDetail extends React.Component {
     this.post = this.post.bind(this);
     this.state = {
       comment: "",
-      comments: []
-    }
+      comments: [],
+      resolved: this.props.todo.resolved
+    };
   }
 
   componentDidMount() {
@@ -140,7 +141,10 @@ class TodoDetail extends React.Component {
             {this.props.todo.description}
           </Text>
           <Text style={styles.text}>
-            resolved: {this.props.todo.resolved}
+            <Switch
+              onValueChange={(value) => this.setState({resolved: value})}
+              style={{marginBottom: 10}}
+              value={this.state.resolved} />
           </Text>
         </View>
         <View style={styles.commentIndex}>

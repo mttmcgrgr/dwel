@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, ListView, StyleSheet} from 'react-native';
+import {View, Text, ListView, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import GroupIndexItem from './group_index_item';
+import Keycode from '../session/Keycode';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,9 +20,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
     backgroundColor: '#259ebc',
-
   },
-
+  addTodoButton: {
+    width: 20,
+    height: 20,
+    right: -35
+  },
+  addTodoButtonContainer: {
+    height: 40,
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 class GroupIndex extends React.Component {
@@ -31,12 +41,31 @@ class GroupIndex extends React.Component {
     this.state = {
       dataSource: ds.cloneWithRows(this.props.groups)
     };
+    this._goToKeycode = this._goToKeycode.bind(this);
+  }
+
+
+  _goToKeycode() {
+   this.props.navigator.push({
+     component: Keycode,
+     title: 'Add a Group',
+     passProps: {
+      currentUser: this.state.currentUser
+      }
+    });
   }
 
 
   render () {
     return (
       <View style={styles.indexPage}>
+        <TouchableOpacity
+        style={styles.addTodoButtonContainer}
+        onPress={this._goToKeycode}>
+          <Image
+            style={styles.addTodoButton}
+            source={require('../../../images/plus.png')}/>
+        </TouchableOpacity>
         <ListView
           contentContainerStyle={styles.container}
           dataSource={this.state.dataSource}

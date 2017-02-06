@@ -49,6 +49,7 @@ Matt's primary responsibilities will be:
 - Setting up back-end and front-end user authentication.
 - Designing backend architecture to differentiate between landlord and tenant users.
 - Creating sign up and login form component for landlords and tenants
+- Constructing the frontend and backend key-code functionality for receiving and submitting group keycodes.
 - Creating the display page & marketing the app
 - Writing the authentication aspects of repo's README, complete with screenshots and code snippets  
 
@@ -62,10 +63,10 @@ Victor's primary responsibilities will be:
 
 Aron's primary responsibilities will be:
 
-- Setting up backend to-do functionality.  
-- Building ticket index, index item, and form components.  
-- Styling all ticket components.  
-- Writing the ticket aspects of the repo's README, complete with screenshots and code snippets
+- Setting up backend to-do and group functionality.  
+- Building todo index, todo index item, todo detail, group index, group home, todo index item components.
+- Styling all todo and group components
+- Writing the group and todo aspects of the repo's README, complete with screenshots and code snippets
 - Creating the display page & marketing the app
 
 ### Implementation Timeline
