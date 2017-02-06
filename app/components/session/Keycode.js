@@ -8,39 +8,83 @@ class Keycode extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: "",
-			password: "",
+      address: "",
       keycode: "",
 			errors: "",
-			currentUser: this.props.currentUser
+			currentUser: this.props.currentUser,
+      newGroup: {},
 		};
-		this.createAccount = this.createAccount.bind(this);
+    this.joinGroup = this.joinGroup.bind(this);
 		this._goToGroupIndex = this._goToGroupIndex.bind(this);
     this.keyGenerator = this.keyGenerator.bind(this);
+    this.createNewGroup = this.createNewGroup.bind(this);
 	}
 
 
-	createAccount(){
-		fetch('http://localhost:3000/api/users', {
-			  method: 'POST',
-			  headers: {
-			    'Accept': 'application/json',
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify({
-			    username: this.state.username,
-			    password: this.state.password
-			  })
-			});
-  	}
+  createNewGroup(){
+		fetch('http://localhost:3000/api/groups', {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({group:{
+					address: this.state.address,
+					token: this.keyGenerator()
+				}})
+			})
+			.then((response) => response.json())
+		 .then(response => {
+       console.log(response);
+			 if (response.token){
+				 this.setState({
+				 newGroup: response
+				});
+			 } else {
+				 this.setState({
+					 errors: response[0]
+				 });
+			 }
+		 });
+		 setTimeout(this._goToGroupIndex, 500);
+		}
+
+
+    // update response from membership success / fail
+    joinGroup(){
+  		fetch('http://localhost:3000/api/memberships', {
+  				method: 'POST',
+  				headers: {
+  					'Accept': 'application/json',
+  					'Content-Type': 'application/json',
+  				},
+  				body: JSON.stringify( {membership:{
+  					token: this.state.keycode
+  				}})
+  			})
+  			.then((response) => response.json())
+  		 .then(response => {
+  			 if (response.first.id){
+  				 this.setState({
+  				 newGroup: response
+  				});
+  			 } else {
+  				 this.setState({
+  					 errors: response[0]
+  				 });
+  			 }
+  		 });
+  		 setTimeout(this._goToGroupIndex, 500);
+  		}
 
 
 		_goToGroupIndex() {
+    if(this.state.newGroup.id){
     this.props.navigator.push({
     component: GroupIndex,
     title: 'Your Groups',
     passProps: {
-			keycode: this.keyGenerator,
+			newGroup: this.state.newGroup,
 			currentUser: this.props.currentUser,
 			groups: [{id: 1, address: "650 S. Spring St. Apt. 1006", otherUser: "Barry Shy",
 			todos: [{description: "Fix sink", body: "the sink has been leaking for days", category: "plumbing", resolved: false},
@@ -48,8 +92,9 @@ class Keycode extends Component {
 			{id: 2, address: "1228 Evelyn Ave.", otherUser: "Sally Rice",
 				todos: [{description: "Air conditioner broken", body: "The air conditioner isn't working", category: "utilities", resolved: false},
 				{description: "Washing machine is leaking", body: "It't getting EVERYWHERE", category: "plumbing", resolved: false}]}]
-		}
-  });
+  		}
+    });
+    }
   }
 
 
@@ -62,17 +107,19 @@ class Keycode extends Component {
 
 
 	render() {
-    console.log(this.props.currentUser);
-    console.log(this.state.currentUser);
+    console.log(this.state.address);
 		return (
 		<View style={styles.inputForm}>
 				<Text style={styles.title}>
-					Enter Key To Join Group
+					Add Group
 				</Text>
 				<Image
 					style={styles.logo}
 					source={require('../../../images/logo.png')}
 				/>
+        <Text style={styles.title}>
+          Enter a Key
+        </Text>
 				<TextInput
 					style={styles.passwordInput}
 					placeholder="Ex: abc123"
@@ -80,6 +127,7 @@ class Keycode extends Component {
 					value={this.state.keycode}
 				/>
 				<TouchableOpacity
+          onPress={this.joinGroup}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
 	            Join Group
@@ -88,13 +136,25 @@ class Keycode extends Component {
         <Text style={styles.title}>
                 Or
         </Text>
+        <Text style={styles.title}>
+					Enter an Address
+				</Text>
+        <TextInput
+					style={styles.passwordInput}
+					placeholder="Ex: 160 Spear Street"
+					onChangeText={(text) => this.setState({address: text})}
+					value={this.state.address}
+				/>
 				<TouchableOpacity
-					onPress={this._goToGroupIndex}
+					onPress={this.createNewGroup}
 					style={styles.button}>
 	          <Text style={styles.buttonText}>
 	            Create New Group
 	          </Text>
         </TouchableOpacity>
+        <Text style={styles.errors}>
+					{this.state.errors}
+				</Text>
 		</View>
 		);
 	}
@@ -174,6 +234,18 @@ const styles = StyleSheet.create({
 	title: {
 		height: 30,
 		width: 200,
+	  justifyContent: 'center',
+		alignItems: 'center',
+		left: 70,
+		padding: 10,
+		textAlign: 'center'
+	},
+
+  errors: {
+		height: 30,
+		width: 200,
+		color: "red",
+		flexDirection: 'row',
 	  justifyContent: 'center',
 		alignItems: 'center',
 		left: 70,

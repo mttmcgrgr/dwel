@@ -40,7 +40,7 @@ class SignUp extends Component {
 		if(this.state.currentUser.username){
 		this.props.navigator.push({
 			component: Keycode,
-			title: 'Key Code',
+			title: 'Add a Group',
 			passProps: {
 			 currentUser: this.state.currentUser
 			 }
