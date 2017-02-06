@@ -1,5 +1,6 @@
 
 import SignUp from './app/components/session/SignUp';
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
