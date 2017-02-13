@@ -15,14 +15,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: 'lightgray',
     borderColor: 'gray',
-    borderRadius: 5,
+    borderRadius: 50,
     height: 40,
-    width: 300,
-    marginBottom: 5
+    width: 260,
+    marginBottom: 5,
+    marginLeft: 20,
+    marginRight: 20
   },
   text: {
     marginLeft: 12,
     fontSize: 14,
+    color: 'white'
   }
 });
 

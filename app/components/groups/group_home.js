@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     borderBottomColor: 'black',
-    borderBottomWidth: 2
+    borderBottomWidth: 2,
+    marginTop: 20,
+    marginBottom: 10
   },
   groupInfoContainer: {
     width: 200,
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
   picker: {
     backgroundColor: "#c9ced6",
     height: 300,
+    borderRadius:10,
     borderWidth: 1
   },
   indexPage: {
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     padding: 10,
-    backgroundColor: '#259ebc',
+    backgroundColor: 'white',
 
   },
   addTodoButton: {
@@ -58,8 +61,18 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   listViewContainer: {
+    flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    backgroundColor: '#fff',
+    borderRadius:50,
+    borderWidth: 1,
+    borderColor: 'grey',
+    paddingTop: 40,
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20
   },
   listContainer: {
     padding: 12,
@@ -75,6 +88,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 40,
     marginBottom: 10,
+    borderRadius:10,
     backgroundColor: "white",
   },
   bodyInput: {
@@ -85,6 +99,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 12,
     marginBottom: 10,
+    borderRadius:10,
     backgroundColor: "white",
   },
   form: {
@@ -96,24 +111,32 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     flex: 1,
-    justifyContent: "center",
-    width: 190,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 20,
-    marginBottom: 10
+		height: 30,
+		// paddingTop: 8,
+		// paddingBottom: 10,
+		width: 100,
+		borderRadius:10,
+		textAlign: 'center',
+		fontSize: 20,
+		justifyContent: "center",
+		color:'#fff',
   },
   button: {
     height: 50,
-    width: 280,
-    borderWidth: 1,
-    borderColor: 'gray',
-    flexDirection: 'row',
-    justifyContent: "center",
-    backgroundColor: '#efbc45',
-    alignItems: 'center',
+		width: 280,
+
+
+		flexDirection: 'row',
+	  justifyContent: "center",
+		backgroundColor:'#68a0cf',
+		borderRadius:10,
+		borderWidth: 1,
+		borderColor: '#fff',
+		alignItems: 'center',
+		left: 40,
+		// marginTop: 5,
     left: 10,
-    paddingTop: 10,
+
     bottom: -30
   },
 

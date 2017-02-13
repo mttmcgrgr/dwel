@@ -103,7 +103,8 @@ class Keycode extends Component {
 	render() {
 		return (
 		<View style={styles.inputForm}>
-				<Text style={styles.title}>
+      <Image source={require('../../../docs/images/house.png')}  style={styles.backgroundImage}>
+				<Text style={styles.title2}>
 					Add Group
 				</Text>
 				<Image
@@ -150,6 +151,7 @@ class Keycode extends Component {
         <Text style={styles.errors}>
 					{this.state.errors}
 				</Text>
+        </Image>
 		</View>
 		);
 	}
@@ -167,6 +169,7 @@ const styles = StyleSheet.create({
 			width: 280,
 			marginBottom: 10,
 			marginTop: 10,
+      	borderRadius:10,
 			backgroundColor: "white",
 			left: 40
 
@@ -182,6 +185,7 @@ const styles = StyleSheet.create({
 			fontSize: 20,
 			marginBottom: 20,
       marginTop: 10,
+      	borderRadius:10,
 			backgroundColor: "white",
 			left: 40
  	},
@@ -192,18 +196,21 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		flexDirection: 'column',
 		padding: 10,
-		backgroundColor: '#259ebc',
+		backgroundColor: "white",
 
 	},
 
 	button: {
-		height: 50,
+    height: 50,
 		width: 280,
-		borderWidth: 1,
-		borderColor: 'gray',
+
+
 		flexDirection: 'row',
 	  justifyContent: "center",
-		backgroundColor: '#efbc45',
+		backgroundColor:'#68a0cf',
+		borderRadius:10,
+		borderWidth: 1,
+		borderColor: '#fff',
 		alignItems: 'center',
 		left: 40,
 		marginTop: 5
@@ -218,6 +225,12 @@ const styles = StyleSheet.create({
 		left: 70,
 		padding: 10,
 	},
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'stretch', // or 'stretch'
+    width: 355,
+    height: 150,
+  },
 
 	logo: {
 		justifyContent:'center',
@@ -227,15 +240,16 @@ const styles = StyleSheet.create({
 	},
 
 	buttonText: {
-		flex: 1,
-		height: 40,
-		paddingTop: 8,
-		paddingBottom: 10,
-		width: 190,
-		fontWeight: 'bold',
+    flex: 1,
+		height: 30,
+		// paddingTop: 8,
+		// paddingBottom: 10,
+		width: 100,
+		borderRadius:10,
 		textAlign: 'center',
 		fontSize: 20,
-		justifyContent: "center"
+		justifyContent: "center",
+		color:'#fff',
 	},
 
 	title: {
@@ -249,8 +263,24 @@ const styles = StyleSheet.create({
     paddingTop: 10,
 		fontSize: 20,
 		textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
 		marginBottom: 10
 	},
+  title2: {
+    height: 35,
+    width: 200,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 75,
+    padding: 5,
+    paddingTop: 10,
+    fontSize: 20,
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginBottom: 10,
+    marginTop: 80,
+  },
 	errors: {
 		height: 30,
 		width: 300,
@@ -261,6 +291,7 @@ const styles = StyleSheet.create({
 		left: 30,
 		padding: 10,
 		textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
 		fontSize: 20
 	}
 

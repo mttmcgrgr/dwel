@@ -8,27 +8,44 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    marginTop: 60,
+    marginTop: 80,
     padding: 10,
-    backgroundColor: '#259ebc',
+    backgroundColor: 'white',
+    // backgroundColor: '#fff',
+    borderRadius:50,
+    borderWidth: 1,
+    borderColor: 'grey',
+    // marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20
   },
   todoDetailContainer: {
     padding: 12,
+
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottomColor: 'black',
-    borderBottomWidth: 2,
     height: 40,
     width: 300,
-    marginBottom: 5
+    // marginBottom: 5,
+    backgroundColor: 'lightgray',
+    borderRadius:50,
+    borderWidth: 1,
+    borderColor: 'grey',
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    // marginBottom: 20
   },
   text: {
     marginLeft: 12,
     fontSize: 16,
+    color: 'white',
   },
   commentIndex: {
     flex: 0.95,
+    // marginBottom: 20
 
   },
   commentContainer: {
@@ -38,15 +55,14 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     justifyContent: "center",
     padding: 10,
-    backgroundColor: 'orange',
+    borderRadius: 50,
+    backgroundColor: 'lightgray',
 
   },
   buttonText: {
-    // height: 30,
-    // borderColor: 'gray',
-    // paddingTop: 8,
-    // paddingBottom: 5,
+    color: 'white',
     fontSize: 8,
+    borderRadius: 50,
     // borderWidth: 1,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -59,16 +75,19 @@ const styles = StyleSheet.create({
     flex: .12,
 		borderColor: 'gray',
 	  justifyContent: 'space-between',
-		backgroundColor: 'gray',
+		backgroundColor: '#68a0cf',
 		alignItems: 'center',
-    marginLeft: 3
+    marginLeft: 3,
+    borderRadius: 50,
 	},
   commentInput:{
 		  flex: .88,
 			borderColor: 'gray',
 			fontSize: 12,
 			borderWidth: 1,
+      borderRadius: 12,
 			backgroundColor: "white",
+      paddingLeft: 10
 
 	},
 });

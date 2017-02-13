@@ -5,7 +5,7 @@ import GroupIndexItem from './group_index_item';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
+    // padding: 12,
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -17,8 +17,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "stretch",
     justifyContent: "center",
-    padding: 10,
-    backgroundColor: '#259ebc',
+    // padding: 10,
+    backgroundColor: '#fff',
+    borderRadius:50,
+    borderWidth: 1,
+    borderColor: 'grey',
+    marginTop: 80,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20
 
   },
 

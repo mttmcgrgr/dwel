@@ -135,7 +135,8 @@ class SignUp extends Component {
 	render(){
 		return (
 		<View style={styles.inputForm}>
-				<Text style={styles.title}>
+			<Image source={require('../../../docs/images/back.png')}  style={styles.backgroundImage}>
+				<Text style={styles.title2}>
 					D W E L
 				</Text>
 				<Image
@@ -181,13 +182,14 @@ class SignUp extends Component {
 				<TouchableOpacity
 						style={styles.login}
 						onPress={this._goToLogin}>
-		          <Text style={styles.buttonText}>
+		          <Text style={styles.buttonText2}>
 		            Login
 		          </Text>
 	        </TouchableOpacity>
 				<Text style={styles.errors}>
 					{this.state.errors}
 				</Text>
+				</Image>
 		</View>
 	);
 	}
@@ -205,9 +207,10 @@ const styles = StyleSheet.create({
 			width: 280,
 			marginBottom: 10,
 			backgroundColor: "white",
-			left: 40
-
+			left: 40,
+			borderRadius:10,
 	},
+
 
 	passwordInput: {
 
@@ -216,9 +219,10 @@ const styles = StyleSheet.create({
 			padding: 10,
 			fontSize: 20,
 			borderWidth: 1,
+			borderRadius:10,
 			width: 280,
 
-			marginBottom: 20,
+			// marginBottom: 20,
 			backgroundColor: "white",
 			left: 40
  	},
@@ -229,21 +233,61 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		flexDirection: 'column',
 		padding: 10,
-		backgroundColor: '#259ebc',
+		backgroundColor: 'rgba(0,0,0,0)',
 
 	},
 
 	button: {
 		height: 50,
 		width: 280,
-		borderWidth: 1,
-		borderColor: 'gray',
+
+
 		flexDirection: 'row',
 	  justifyContent: "center",
-		backgroundColor: '#efbc45',
+		backgroundColor:'#68a0cf',
+		borderRadius:10,
+		borderWidth: 1,
+		borderColor: '#fff',
 		alignItems: 'center',
 		left: 40,
 		marginTop: 5
+	},
+	submit:{
+		alignItems: 'center',
+		justifyContent: "center",
+		marginRight:40,
+		marginLeft:40,
+		marginTop:10,
+		paddingTop:10,
+		paddingBottom:10,
+		backgroundColor:'#68a0cf',
+		borderRadius:10,
+		borderWidth: 1,
+		borderColor: '#fff'
+	},
+	buttonText: {
+		flex: 1,
+		height: 30,
+		// paddingTop: 8,
+		// paddingBottom: 10,
+		width: 100,
+		borderRadius:10,
+		textAlign: 'center',
+		fontSize: 20,
+		justifyContent: "center",
+		color:'#fff',
+	},
+	buttonText2: {
+		flex: 1,
+		height: 30,
+		// paddingTop: 8,
+		// paddingBottom: 10,
+		width: 100,
+		borderRadius:10,
+		textAlign: 'center',
+		fontSize: 20,
+		justifyContent: "center",
+		color:'#68a0cf',
 	},
 
 	login: {
@@ -257,6 +301,12 @@ const styles = StyleSheet.create({
 		left: 70,
 		padding: 10,
 	},
+	backgroundImage: {
+		flex: 1,
+		resizeMode: 'stretch', // or 'stretch'
+		width: 355,
+		height: 150,
+	},
 
 	logo: {
 		justifyContent:'center',
@@ -265,17 +315,7 @@ const styles = StyleSheet.create({
 		left: 142
 	},
 
-	buttonText: {
-		flex: 1,
-		height: 40,
-		paddingTop: 8,
-		paddingBottom: 10,
-		width: 190,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		fontSize: 20,
-		justifyContent: "center"
-	},
+
 
 	title: {
 		height: 30,
@@ -287,7 +327,21 @@ const styles = StyleSheet.create({
 		padding: 10,
 		fontSize: 20,
 		textAlign: 'center',
-		marginBottom: 10
+		marginBottom: 10,
+
+	},
+	title2: {
+		height: 30,
+		width: 200,
+		flexDirection: 'row',
+	  justifyContent: 'center',
+		alignItems: 'center',
+		left: 75,
+		padding: 10,
+		fontSize: 20,
+		textAlign: 'center',
+		marginBottom: 10,
+		marginTop: 80,
 	},
 	errors: {
 		height: 30,
@@ -298,6 +352,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		left: 30,
 		padding: 10,
+		backgroundColor: 'rgba(0,0,0,0)',
 		textAlign: 'center',
 		fontSize: 20
 	}

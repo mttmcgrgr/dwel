@@ -5,6 +5,7 @@ import TodosIndexItem from './todos_index_item.js';
 const styles = StyleSheet.create({
   listViewContainer: {
     flexDirection: 'column',
+
     justifyContent: 'flex-start'
   },
   container: {
