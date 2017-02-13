@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   },
   listViewContainer: {
     flex: 1,
+    width: 300,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     backgroundColor: '#fff',
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   form: {
+    flex: 1,
     marginTop: 30,
     height: 400,
     width: 300,

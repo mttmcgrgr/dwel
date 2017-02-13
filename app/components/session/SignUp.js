@@ -43,7 +43,8 @@ class SignUp extends Component {
 			component: Keycode,
 			title: 'Add a Group',
 			passProps: {
-			 currentUser: this.state.currentUser
+			 currentUser: this.state.currentUser,
+			 groups: this.state.currentUser.groups
 			 }
 	   });
     }

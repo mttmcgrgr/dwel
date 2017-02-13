@@ -34,7 +34,6 @@ class Login extends Component {
 			})
 			.then((response) => response.json())
 		 .then(response => {
-			 console.log(response);
 			 if(response.username){
 				 this.setState({
 				 currentUser: response

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {View, Text, TouchableOpacity, Switch, StyleSheet } from 'react-native';
 // import {switch} from 'react-native-switch'
 import TodoDetail from './todo_detail';
 
@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   },
   todoItem: {
     padding: 12,
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     flex: 1,
@@ -36,7 +37,7 @@ class TodosIndexItem extends React.Component {
     this._onForward = this._onForward.bind(this);
     this.state = {
       resolved: this.props.todo.resolved
-    }
+    };
   }
 
   _onForward() {
@@ -45,8 +46,8 @@ class TodosIndexItem extends React.Component {
       title: 'Todo',
       passProps: {
         todo: this.props.todo,
-        currentUser: this.props.currentUser
-
+        currentUser: this.props.currentUser,
+        resolved: this.props.todo.resolved
       }
     });
   }
@@ -87,6 +88,10 @@ class TodosIndexItem extends React.Component {
           <Text style={styles.text}>
             {this.props.todo.description}
           </Text>
+          <Switch
+            onValueChange={(value) => this.setState({resolved: value})}
+
+            value={this.state.resolved} />
         </TouchableOpacity>
       </View>
     );
