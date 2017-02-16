@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
 		marginTop: 80,
 	},
 	errors: {
-		height: 30,
+		height: 35,
 		width: 300,
 		color: "red",
 		flexDirection: 'row',

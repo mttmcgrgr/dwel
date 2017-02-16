@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginLeft: 12,
-    fontSize: 14,
+    fontSize: 12,
+    height: 14,
     color: "white",
   },
   button: {
@@ -60,6 +61,9 @@ class GroupIndexItem extends React.Component {
           onPress={this._onForward}>
           <Text style={styles.text}>
             {this.props.group.address}
+          </Text>
+          <Text style={styles.text}>
+            key code: {this.props.group.token}
           </Text>
           <Text style={styles.text}>
             {this.props.group.todos.length} outstanding todo(s)

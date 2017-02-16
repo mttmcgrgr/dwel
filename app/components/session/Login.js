@@ -53,7 +53,8 @@ class Login extends Component {
      component: GroupIndex,
      title: 'Groups',
      passProps: {
- 			currentUser: this.state.currentUser
+ 			currentUser: this.state.currentUser,
+			groups: this.state.currentUser.groups
  	  	 }
    	 });
      }
